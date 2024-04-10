@@ -11,7 +11,7 @@ import { categoryImages } from "@/data-access/category-images";
 
 const CategoryCarousel = () => {
   return (
-    <div className="w-full lg:container">
+    <div className="w-full px-6 lg:container lg:px-0 mt-4">
       <Carousel
         className="w-full"
         opts={{
@@ -20,7 +20,10 @@ const CategoryCarousel = () => {
       >
         <CarouselContent className="w-full flex">
           {categoryImages.map(({ id, image }) => (
-            <CarouselItem key={id} className="flex-none mr-4 ">
+            <CarouselItem
+              key={id}
+              className="flex-none mr-4 basis-1/2 sm:basis-1/3 md:basis-1/3 lg:basis-1/4 "
+            >
               <div className="rounded-full shadow-md overflow-hidden">
                 <div className="relative h-[150px] w-[200px] lg:h-[230px] lg:w-[294px] ">
                   <Image
@@ -35,10 +38,15 @@ const CategoryCarousel = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious externalArrow={true} className="hidden lg:bg-transparent lg:border-none lg:pl-[7px] lg:block lg:absolute lg:left-[-50px] lg:top-1/2 lg:-translate-y-1/2 " />
-        <CarouselNext externalArrow={true} className="hidden lg:bg-transparent lg:border-none lg:pl-[7px] lg:block lg:absolute lg:right-[-50px] lg:top-1/2 lg:-translate-y-1/2  " />
+        <CarouselPrevious
+          externalArrow={true}
+          className="hidden lg:bg-transparent lg:border-none lg:pl-[7px] lg:block lg:absolute lg:left-[-50px] lg:top-1/2 lg:-translate-y-1/2 "
+        />
+        <CarouselNext
+          externalArrow={true}
+          className="hidden lg:bg-transparent lg:border-none lg:pl-[7px] lg:block lg:absolute lg:right-[-50px] lg:top-1/2 lg:-translate-y-1/2  "
+        />
       </Carousel>
-      
     </div>
   );
 };

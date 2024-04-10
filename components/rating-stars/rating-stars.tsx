@@ -1,6 +1,17 @@
+"use client";
+import { useEffect, useState } from "react";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
 const StarRating = ({ rating }: { rating: number }) => {
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
   const roundedRating = Math.round(rating * 2) / 2;
 
   const fullStarsCount = Math.floor(roundedRating);
@@ -8,11 +19,11 @@ const StarRating = ({ rating }: { rating: number }) => {
 
   const stars = Array.from({ length: 5 }, (_, index) => {
     if (index < fullStarsCount) {
-      return <FaStar key={index} />;
+      return <FaStar size={22} key={index} />;
     } else if (index === fullStarsCount && hasHalfStar) {
-      return <FaStarHalfAlt key="half-star" />;
+      return <FaStarHalfAlt size={22} key="half-star" />;
     } else {
-      return <FaRegStar key={`empty-${index}`} />;
+      return <FaRegStar size={22} key={`empty-${index}`} />;
     }
   });
 

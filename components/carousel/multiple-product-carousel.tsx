@@ -65,60 +65,60 @@ const MultipleProductCarousel = ({
   products,
 }: MultipleProductCarouselPropes) => {
   return (
-    <div className="w-full py-4 lg:container">
+    <div className="w-full py-4 px-6 lg:container lg:px-0">
       <div className="text-4xl font-medium my-8">Deal of the Day</div>
       <div className="">
         <Carousel>
-          <CarouselContent>
+          <CarouselContent className="ml-2">
             {products &&
               products.map((product, index) => (
                 <CarouselItem
                   key={index}
-                  className="basis-1/2 sm:basis-1/2 md:basis-1/2 lg:basis-1/4"
+                  className="basis-1/2 sm:basis-1/2 md:basis-1/2 lg:basis-1/4 border rounded-lg mx-3 "
                 >
-                  <Card className="shadow-sm md:h-[450px] bg-transparent">
-                    <CardContent className="aspect-square ">
-                      <div className="relative flex flex-col px-4 py-5 sm:p-6">
-                        {/* <q className="flex-1 text-gray-600 dark:text-gray-300">
-                        {testimonial.quote}
-                      </q> */}
-                        <div className="absolute text-red-400 flex justify-end w-full ml-[-20px] ">
-                          <FaHeart size={22} />
-                        </div>
-                        <div className="h-[150px] w-[200px] lg:h-[230px] lg:w-[294px] text-primary-txt">
-                          <span className="inline-flex rounded-full">
-                            <Image
-                              loader={imageLoader}
-                              className="h-10 w-10 rounded-full"
-                              height={40}
-                              width={40}
-                              alt={product.name}
-                              src="/deals-of-the-day/dealsOfTheDay1.png"
-                              loading="lazy"
-                            />
-                          </span>
-                          <div>
-                            <p className="text-sm font-semibold ">
-                              {product.name}
-                            </p>
-                            <div>
-                              <p>
-                                <IndianRupee className="inline" />
-                                {product.price}
-                              </p>
-                              <p>
-                                <IndianRupee className="inline" />
-                                {product.discountedPrice}
-                              </p>
-                              <p>
-                                <StarRating rating={product.rate} />
-                              </p>
-                            </div>
-                          </div>
-                        </div>
+                  {/* <Card className="shadow-sm md:h-[450px] bg-transparent"> */}
+                  {/* <CardContent className="aspect-square "> */}
+                  <div className="relative flex flex-col px-4 py-5 sm:p-6">
+                    <div className="absolute text-red-400 flex justify-end w-full ml-[-50px] ">
+                      <FaHeart size={22} />
+                    </div>
+
+                    <div className="w-full flex-1 text-primary-txt">
+                      <div className="inline-flex justify-center mt-10 rounded-lg w-full">
+                        <Image
+                          loader={imageLoader}
+                          className="h-full w-full"
+                          height={200}
+                          width={80}
+                          alt={product.name}
+                          src="/deals-of-the-day/dealsOfTheDay1.png"
+                          loading="lazy"
+                        />
                       </div>
-                    </CardContent>
-                  </Card>
+                      <div className="w-full text-xl">
+                        <p className=" font-semibold truncate ">
+                          {product.name}
+                        </p>
+                        <div className="flex my-2">
+                          <p>
+                            <IndianRupee className="inline" />
+                            {Number(product.price).toLocaleString("us")}
+                          </p>
+                          <p className="text-sm flex items-center text-custom-gray line-through mx-2">
+                            <span className="text-xl">₹</span>
+                            {Number(product.discountedPrice).toLocaleString(
+                              "us"
+                            )}
+                          </p>
+                        </div>
+                        <p>
+                          <StarRating rating={product.rate} />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* </CardContent> */}
+                  {/* </Card> */}
                 </CarouselItem>
               ))}
           </CarouselContent>
