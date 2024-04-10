@@ -4,10 +4,10 @@
 
 @layer base {
   :root {
-    --dark-sheet: #191919;
     --primary-dark: #191919;
-    --custom-btn: #74DDA9;
-    --custom-txt: #74DDA9;
+    --primary-txt: #ffffff;
+    --custom-btn: #74dda9;
+    --custom-txt: #74dda9;
 
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 25, 25, 25;

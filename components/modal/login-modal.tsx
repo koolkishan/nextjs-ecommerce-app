@@ -15,11 +15,14 @@ const LoginModal = () => {
         <Tabs defaultValue="login" className="w-[400px] mt-5 ml-8">
           <DialogHeader>
             <TabsList className="bg-transparent border border-gray-500 py-6">
-              <TabsTrigger className="text-white border-none " value="login">
+              <TabsTrigger
+                className="text-primary-txt border-none "
+                value="login"
+              >
                 Login
               </TabsTrigger>
               <TabsTrigger
-                className="text-white border-none"
+                className="text-primary-txt border-none"
                 value="createAccount"
               >
                 Create Account

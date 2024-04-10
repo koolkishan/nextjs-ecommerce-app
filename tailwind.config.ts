@@ -14,18 +14,18 @@ const config = {
       center: true,
       padding: {
         DEFAULT: "1rem",
-        sm: "1rem",
-        lg: "2rem",
-        xl: "3rem",
-        "2xl": "4rem",
+        // sm: "2rem",
+        lg: "1rem",
+        xl: "2rem",
+        // "2xl": "6rem",
       },
     },
     extend: {
       colors: {
-        sheet: "var(--dark-sheet)",
-        'primary-dark': "var(--primary-dark)",
-        'custom-btn': "var(--custom-btn)",
-        'custom-txt': "var(--custom-txt)",
+        "primary-dark": "var(--primary-dark)",
+        "custom-btn": "var(--custom-btn)",
+        "primary-txt": "var(--primary-txt)",
+        "custom-txt": "var(--custom-txt)",
 
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -75,7 +75,7 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-          "caret-blink": {
+        "caret-blink": {
           "0%,70%,100%": { opacity: "1" },
           "20%,50%": { opacity: "0" },
         },
