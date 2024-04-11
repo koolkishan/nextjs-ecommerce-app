@@ -23,9 +23,10 @@ const config = {
     extend: {
       colors: {
         "primary-dark": "var(--primary-dark)",
+        "secondary-dark": "var(--secondary-dark)",
         "primary-txt": "var(--primary-txt)",
-        "custom-btn": "var(--custom-btn)",
         "custom-txt": "var(--custom-txt)",
+        "custom-btn": "var(--custom-btn)",
         "custom-gray": "var(--custom-gray)",
 
         border: "hsl(var(--border))",

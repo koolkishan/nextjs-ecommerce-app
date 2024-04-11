@@ -1,6 +1,6 @@
 import { getProductFromId } from "@/data-access/products";
 import { redirect } from "next/navigation";
-import { SimilarProducts, SingleProduct } from "../_components";
+import { ProductReview, SimilarProducts, SingleProduct } from "../_components";
 
 interface SingleProductPageProps {
   params: {
@@ -11,6 +11,7 @@ const SingleProductPage = ({ params }: SingleProductPageProps) => {
   return (
     <div>
       <SingleProduct productId={params.productId} />
+      <ProductReview />
       <SimilarProducts />
     </div>
   );
