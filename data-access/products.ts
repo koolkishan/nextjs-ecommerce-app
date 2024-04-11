@@ -120,3 +120,9 @@ export const dealOfTheDay = [
     category: "Mobile & Mobile Accessories",
   },
 ];
+
+
+export const getProductFromId = (productId:string) => {
+  const product = dealOfTheDay.find(p => p.id === +productId);
+  return product;
+}
