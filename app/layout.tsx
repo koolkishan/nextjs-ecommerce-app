@@ -17,12 +17,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en">
       <body className={`${inter.className}`}>
         <Provider>
-          <div>
+          <div className="sticky top-0 z-50 bg-black">
             <Header />
           </div>
           <div>{children}</div>

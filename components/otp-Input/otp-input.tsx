@@ -104,15 +104,15 @@ const OtpInput = ({ email }: OtpInputProps) => {
             name="pin"
             render={({ field }) => (
               <FormItem>
-                <p className="my-4 text-center font-bold uppercase text-white">
+                <p className="my-4 text-center font-bold uppercase text-primary-txt">
                   Verify with otp
                 </p>
-                <FormLabel className="my-4 block text-center text-white">
+                <FormLabel className="my-4 block text-center text-primary-txt">
                   sent to {email}
                 </FormLabel>
                 <FormControl>
                   <InputOTP maxLength={6} {...field} className="">
-                    <div className="my-4 flex w-full justify-center text-white">
+                    <div className="my-4 flex w-full justify-center text-primary-txt">
                       <div>
                         <InputOTPGroup className="border-gray-500 bg-transparent outline-none">
                           <InputOTPSlot
@@ -168,7 +168,7 @@ const OtpInput = ({ email }: OtpInputProps) => {
           </Button>
         </form>
       </Form>
-      <div className="text-center text-sm font-medium text-white">
+      <div className="text-center text-sm font-medium text-primary-txt">
         {`Didn't Receive Your OTP?`}{" "}
         <Button
           variant={"link"}

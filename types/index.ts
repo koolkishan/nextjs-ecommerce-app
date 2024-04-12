@@ -1,0 +1,27 @@
+export interface DealOfTheDayTypes {
+    id: number;
+    name: string;
+    price: number;
+    image: string;
+    discountedPrice: number;
+    rate: number;
+    totalRating: number;
+    totalReview: number;
+    keyFeatures?: (string)[] | null;
+    category: string;
+  }
+
+  export interface ProductTypes {
+    id: number;
+    name: string;
+    price: number;
+    image: string;
+    discountedPrice: number;
+    rate: number;
+    totalRating: number;
+    totalReview: number;
+    keyFeatures?: (string)[] | null;
+    category: string;
+  }
+  
+  

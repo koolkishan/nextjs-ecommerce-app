@@ -8,6 +8,8 @@ import { Profile } from "@/components/profile";
 import { IoCart } from "react-icons/io5";
 import { useRouter } from "next/navigation";
 import { useAppStore } from "@/store";
+import { useEffect } from "react";
+import cities from "cities.json";
 
 const Header = () => {
   const router = useRouter();
@@ -19,8 +21,8 @@ const Header = () => {
   };
   return (
     <>
-    {/* px-6 lg:container lg:px-0 */}
-      <div className="flex items-center py-6 ">
+      {/* px-6 lg:container lg:px-0 */}
+      <div className="flex items-center py-6 lg:mx-10">
         <div className="flex w-[80%] md:w-[60%] lg:w-[70%]">
           <h1 className="hidden md:block md:text-5xl md:mr-10 lg:mr-32">ABC</h1>
           <div className="flex items-center mr-4 md:mr-[5%] lg:mr-[10%]">

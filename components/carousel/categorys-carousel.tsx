@@ -11,7 +11,7 @@ import { categoryImages } from "@/data-access/category-images";
 
 const CategoryCarousel = () => {
   return (
-    <div className="w-full mx-4">
+    <div className="w-full px-6 lg:container lg:px-0 mt-4">
       <Carousel
         className="w-full"
         opts={{
@@ -20,9 +20,12 @@ const CategoryCarousel = () => {
       >
         <CarouselContent className="w-full flex">
           {categoryImages.map(({ id, image }) => (
-            <CarouselItem key={id} className="flex-none mr-4">
-              <div className="rounded-full shadow-md">
-                <div className="relative h-[230px] w-[294px] ">
+            <CarouselItem
+              key={id}
+              className="flex-none mr-4 basis-1/2 sm:basis-1/3 md:basis-1/3 lg:basis-1/4 "
+            >
+              <div className="rounded-full shadow-md overflow-hidden">
+                <div className="relative h-[150px] w-[200px] lg:h-[230px] lg:w-[294px] ">
                   <Image
                     src={image}
                     alt="logo-maker"
@@ -35,27 +38,15 @@ const CategoryCarousel = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="translate-x-16 bg-gray-500/15" />
-        <CarouselNext className="-translate-x-16 bg-gray-500/15" />
+        <CarouselPrevious
+          externalArrow={true}
+          className="hidden lg:bg-transparent lg:border-none lg:pl-[7px] lg:block lg:absolute lg:left-[-50px] lg:top-1/2 lg:-translate-y-1/2 "
+        />
+        <CarouselNext
+          externalArrow={true}
+          className="hidden lg:bg-transparent lg:border-none lg:pl-[7px] lg:block lg:absolute lg:right-[-50px] lg:top-1/2 lg:-translate-y-1/2  "
+        />
       </Carousel>
-      {/* <Carousel
-        className=""
-        // opts={{
-        //   slidesToScroll: "auto",
-        // }}
-      >
-        <CarouselContent className="flex justify-center items-center">
-          {Array.from({ length: 18 }).map((_, index) => (
-            <CarouselItem key={index} className="basis-auto">
-              <div className="p-1 mx-4">
-                <span className="text-3xl font-semibold">{index + 1}</span>
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel> */}
     </div>
   );
 };

@@ -8,8 +8,15 @@ const buttonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
+      // cn(
+      //   "absolute  h-8 w-8 rounded-full bg-red-400",
+      //   orientation === "horizontal"
+      //     ? "-left-12 top-1/2 -translate-y-1/2"
+      //     : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+      //   className
+      // )
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default: cn("bg-primary text-primary-foreground hover:bg-primary/10"), //fix this type script error
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
@@ -18,6 +25,7 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        externalArrow: "bg-primary text-primary-foreground"
       },
       size: {
         default: "h-10 px-4 py-2",
@@ -37,6 +45,7 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
+  externalArrow?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
