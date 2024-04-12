@@ -1,6 +1,6 @@
 import { getProductFromId } from "@/data-access/products";
 import { redirect } from "next/navigation";
-import { ProductReview, SimilarProducts, SingleProduct } from "../_components";
+import { ProductReview, SimilarProducts, SingleProduct } from "../../../../../components/single-products";
 
 interface SingleProductPageProps {
   params: {

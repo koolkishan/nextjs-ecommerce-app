@@ -8,6 +8,8 @@ import { Profile } from "@/components/profile";
 import { IoCart } from "react-icons/io5";
 import { useRouter } from "next/navigation";
 import { useAppStore } from "@/store";
+import { useEffect } from "react";
+import cities from "cities.json";
 
 const Header = () => {
   const router = useRouter();

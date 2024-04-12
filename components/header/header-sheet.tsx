@@ -28,10 +28,36 @@ const HeaderSheet = () => {
         className={`mt-20 bg-primary-dark rounded-lg ${toggle ? "block" : "hidden"} pointer-events-none`}
       >
         <SheetHeader>
-          <SheetTitle className="text-primary-txt">Shop by Category</SheetTitle>
+          <SheetTitle className="text-primary-txt font-bold text-2xl">
+            Shop by Category
+          </SheetTitle>
           <SheetDescription className="text-primary-txt">
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+            <div>
+              <div className="text-lg font-medium my-3 cursor-pointer mx-2">
+                Mobiles
+              </div>
+              <div className="text-lg font-medium my-3 cursor-pointer mx-2">
+                Air Conditioners
+              </div>
+              <div className="text-lg font-medium my-3 cursor-pointer mx-2">
+                Televisons
+              </div>
+              <div className="text-lg font-medium my-3 cursor-pointer mx-2">
+                Laptops
+              </div>
+              <div className="text-lg font-medium my-3 cursor-pointer mx-2">
+                Headphones & Earphones
+              </div>
+              <div className="text-lg font-medium my-3 cursor-pointer mx-2">
+                Coolers
+              </div>
+              <div className="text-lg font-medium my-3 cursor-pointer mx-2">
+                Home Theatres & Soundbars
+              </div>
+              <div className="text-lg font-medium my-3 cursor-pointer mx-2">
+                Mobiles
+              </div>
+            </div>
           </SheetDescription>
         </SheetHeader>
       </SheetContent>

@@ -14,7 +14,7 @@ const HoverList = ({ hoverTrigger, hoverContent }: HoverListProps) => {
     <div className="flex">
       <HoverCard>
         <HoverCardTrigger>{hoverTrigger}</HoverCardTrigger>
-        <HoverCardContent className="bg-primary-dark text-primary-txt ">
+        <HoverCardContent className="bg-primary-dark text-primary-txt m-4 w-[400px] border-custom-gray ">
           {hoverContent}
         </HoverCardContent>
       </HoverCard>
