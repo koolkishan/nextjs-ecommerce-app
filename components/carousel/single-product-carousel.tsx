@@ -23,7 +23,7 @@ export function SingleProductCarousel({
 }: SingleProductCarouselProps) {
   const { setProductCarouselImage } = useAppStore();
   const handleClick = (image: string) => {
-    console.log(image);
+    // console.log(image);
     setProductCarouselImage(image);
   };
   return (

@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { useAppStore } from "@/store";
 import { useEffect } from "react";
 import cities from "cities.json";
+import Search from "./search";
 
 const Header = () => {
   const router = useRouter();
@@ -33,10 +34,7 @@ const Header = () => {
             <p>ABC</p>
           </div>
           <div className="hidden md:block w-1/2">
-            <Input
-              className="text-black"
-              placeholder="What are you looking for?"
-            />
+            <Search />
           </div>
         </div>
         <div className="flex w-[20%] md:w-[40%] lg:w-[30%] justify-end">

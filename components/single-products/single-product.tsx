@@ -17,7 +17,7 @@ interface SingleProductProps {
 const SingleProduct = ({ productId }: SingleProductProps) => {
   const [isMounted, setIsMounted] = useState<boolean>(false);
   const { productCarouselImage } = useAppStore();
-  console.log(productCarouselImage);
+  // console.log(productCarouselImage);
   useEffect(() => {
     setIsMounted(true);
   }, []);

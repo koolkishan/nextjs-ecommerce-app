@@ -34,7 +34,6 @@ const ProductReview = () => {
 
   const onSubmit = async (data: z.infer<typeof reviewSchema>) => {
     try {
-      console.log(data);
       setSuccess("Review submitted successfully!");
       form.reset();
     } catch (err) {
