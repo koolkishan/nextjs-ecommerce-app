@@ -1,3 +1,4 @@
+import { ProductTypes } from "@/types";
 import { StateCreator } from "zustand";
 // import { WeatherDataTypes } from "../../types";
 // import { SettingTypes } from "../../types";
@@ -16,6 +17,8 @@ export interface EcommerceAppSliceTypes {
   setProductCarouselImage: (data: string) => void;
   searchTerm? :string;
   setSearchTerm: (data: string) => void;
+  filterProduct: ProductTypes[];
+  setFilterProduct: (data: ProductTypes[]) => void;
 }
 
 const createEcommerceAppSlice: StateCreator<EcommerceAppSliceTypes> = (set, get) => ({
@@ -30,9 +33,11 @@ const createEcommerceAppSlice: StateCreator<EcommerceAppSliceTypes> = (set, get)
   searchTerm:'',
   setSearchTerm: (term: string) => {
     set({ searchTerm: term });
+  },
+  filterProduct:[],
+  setFilterProduct: (products: ProductTypes[]) => {
+    set({ filterProduct: products });
   }
-  // weatherData: null,
-  // setWeatherData: (data: WeatherDataTypes) => {
 });
 
 export { createEcommerceAppSlice };

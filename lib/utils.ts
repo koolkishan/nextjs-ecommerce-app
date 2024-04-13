@@ -28,3 +28,81 @@ export function genrateBrands({ products }: { products: ProductTypes[] }) {
   });
   return uniqueBrands;
 }
+
+export function genrateCategories({ products }: { products: ProductTypes[] }) {
+  const categories = products.map((product) => product.category);
+  const uniqueCategories = categories.filter((category, index) => {
+    return categories.indexOf(category) === index;
+  });
+  return uniqueCategories;
+}
+
+export const filterProducts = ({
+  products,
+  selectBrands,
+  selectCategories,
+  selectPrices,
+}: {
+  products: ProductTypes[];
+  selectCategories: string[];
+  selectPrices: string[];
+  selectBrands: string[];
+}) => {
+  return products.filter((product) => {
+    const matchesCategory =
+      selectCategories.length === 0 ||
+      selectCategories.includes(product.category);
+
+    const matchesPrice =
+      selectPrices.length === 0 ||
+      selectPrices.some((priceRange) => {
+        const [minPrice, maxPrice] = priceRange.split("-").map(Number);
+        return product.price >= minPrice && product.price <= maxPrice;
+      });
+
+    const matchesBrand =
+      selectBrands.length === 0 || selectBrands.includes(product.brand);
+
+    return matchesCategory && matchesPrice && matchesBrand;
+  });
+};
+
+export const sortByProduct = ({
+  products,
+  sortBy,
+}: {
+  products: ProductTypes[];
+  sortBy: string | undefined;
+}) => {
+  // Default to unsorted products
+
+  // let products = [];
+
+  // Handle sorting based on the sortBy parameter
+  if (sortBy === "Price (Lowest First)") {
+    console.log("🚀 ~ sortBy:", sortBy);
+
+    products.sort((a, b) => +a.price - +b.price);
+    console.log("Sorted by Price (Lowest First):", products);
+  } else if (sortBy === "Price (Highest First)") {
+    console.log("🚀 ~ sortBy:", sortBy);
+
+    products.sort((a, b) => +b.price - +a.price);
+    console.log("Sorted by Price (Highest First):", products);
+  } else if (sortBy === "Latest Arrival") {
+    // Assuming the products have a property for arrival date,
+    // sort based on arrival date (newest first).
+    // products.sort((a, b) => new Date(b.arrivalDate).getTime() - new Date(a.arrivalDate).getTime());
+    // console.log("Sorted by Latest Arrival:", products);
+    return products;
+  } else {
+    console.log("🚀 ~ sortBy:", sortBy);
+
+    // If sortBy does not match any known criteria, return unsorted products
+    console.log("No valid sort by criteria, returning unsorted products.");
+    return products;
+  }
+
+  // Return the sorted products
+  return products;
+};

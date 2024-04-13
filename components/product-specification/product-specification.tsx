@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import {
   Select,
@@ -7,7 +8,15 @@ import {
   SelectValue,
   SelectGroup,
 } from "@/components/ui/select";
-import { cn, genratePriceRanges, genrateBrands } from "@/lib/utils";
+import {
+  cn,
+  genratePriceRanges,
+  genrateBrands,
+  genrateCategories,
+  filterProducts,
+  sortByProduct,
+} from "@/lib/utils";
+import { useAppStore } from "@/store";
 import { ProductTypes } from "@/types";
 import { ChangeEvent, useEffect, useState } from "react";
 
@@ -25,49 +34,55 @@ const ProductSpecification = ({
   sortBy,
   searchedProducts,
 }: ProductSpecificationProps) => {
-  const categories = [
-    "category1",
-    "category2",
-    "category3",
-    "category4",
-    "category5",
-  ];
+  console.log("🚀 ~ searchedProducts:", searchedProducts);
   const [selectCategories, setSelectCategories] = useState<string[]>([]);
   const [selectPrices, setSelectPrices] = useState<string[]>([]);
   const [selectBrands, setSelectBrands] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState<string[]>([]);
   const [brands, setBrands] = useState<string[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [sortByProducts, setSortByProducts] = useState<string>();
+  // console.log("🚀 ~ sortByProducts:", sortByProducts);
+
+  const { filterProduct, setFilterProduct } = useAppStore();
+  console.log("🚀 ~ filterProduct:", filterProduct);
+
+  function handleSelection(
+    event: ChangeEvent<HTMLInputElement>,
+    setSelection: React.Dispatch<React.SetStateAction<string[]>>
+  ) {
+    const value = event.target.value;
+    if (event.target.checked) {
+      setSelection((prevSelection) => [...prevSelection, value]);
+    } else {
+      setSelection((prevSelection) =>
+        prevSelection.filter((option: string) => option !== value)
+      );
+    }
+  }
+
   const handleCategory = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = event?.target?.value;
-    if (event.target.checked) {
-      setSelectCategories([...selectCategories, value]);
-    } else {
-      setSelectCategories(
-        selectCategories.filter((option: any) => option !== value)
-      );
-    }
+    handleSelection(event, setSelectCategories);
   };
+
   const handlePrice = (event: ChangeEvent<HTMLInputElement>) => {
-    const price = event.target.value;
-    if (event.target.checked) {
-      setSelectPrices([...selectPrices, price]);
-    } else {
-      setSelectPrices(
-        selectPrices.filter((option: string) => option !== price)
-      );
-    }
+    handleSelection(event, setSelectPrices);
   };
+
   const handleBrand = (event: ChangeEvent<HTMLInputElement>) => {
-    const brand = event.target.value;
-    if (event.target.checked) {
-      setSelectBrands([...selectBrands, brand]);
-    } else {
-      setSelectBrands(
-        selectBrands.filter((option: string) => option !== brand)
-      );
-    }
+    handleSelection(event, setSelectBrands);
   };
+
+  const handleSortBy = (sortBy: string) => {
+    // console.log(sortBy);
+    setSortByProducts(sortBy);
+  };
+
   useEffect(() => {
+    if (category) {
+      const categories = genrateCategories({ products: searchedProducts });
+      setCategories(categories);
+    }
     if (price) {
       const priceRange = genratePriceRanges({ products: searchedProducts });
       setPriceRange(priceRange);
@@ -76,7 +91,43 @@ const ProductSpecification = ({
       const brands = genrateBrands({ products: searchedProducts });
       setBrands(brands);
     }
-  }, [brand, price, searchedProducts]);
+  }, [category, brand, price, searchedProducts]);
+
+  useEffect(() => {
+    setFilterProduct(searchedProducts);
+  }, []);
+
+  useEffect(() => {
+    if (filterProduct.length) {
+      let filtered = filterProducts({
+        products: filterProduct,
+        selectCategories,
+        selectPrices,
+        selectBrands,
+      });
+      setFilterProduct(filtered);
+    } else {
+      let filtered = filterProducts({
+        products: searchedProducts,
+        selectCategories,
+        selectPrices,
+        selectBrands,
+      });
+      setFilterProduct(filtered);
+    }
+  }, [selectCategories, selectPrices, selectBrands]);
+
+  // use;
+  useEffect(() => {
+    if (sortBy) {
+      const filtered = sortByProduct({
+        products: filterProduct,
+        sortBy: sortByProducts,
+      });
+      setFilterProduct(filtered);
+    }
+  }, [sortByProducts]);
+
   return (
     <>
       <div>
@@ -146,7 +197,7 @@ const ProductSpecification = ({
             </SelectContent>
           </Select>
         )}
-        {brand && ( 
+        {brand && (
           <Select>
             <SelectTrigger className="w-fit bg-gray-400/20 border-none h-8 mr-3">
               <SelectValue placeholder="Brand" />
@@ -183,7 +234,7 @@ const ProductSpecification = ({
 
       <div>
         {sortBy && (
-          <Select>
+          <Select onValueChange={handleSortBy}>
             <SelectTrigger className="w-fit bg-gray-400/20 border-none h-8 mr-3">
               <SelectValue placeholder="Sort By" />
             </SelectTrigger>
@@ -194,7 +245,7 @@ const ProductSpecification = ({
               >{`Price (Lowest First)`}</SelectItem>
               <SelectItem
                 className="hover:bg-none cursor-pointer text-primary-txt"
-                value="`Price (Highest First)"
+                value={`Price (Highest First)`}
               >{`Price (Highest First)`}</SelectItem>
               <SelectItem
                 className="hover:bg-none cursor-pointer text-primary-txt"

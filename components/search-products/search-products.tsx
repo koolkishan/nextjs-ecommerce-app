@@ -24,6 +24,7 @@ const SearchProducts = ({ searchField }: SearchProductsProps) => {
     });
     if (items.length) setsearchedProducts(items);
   }, [searchField]);
+ 
   return (
     <div className="w-full px-6 lg:container lg:px-0">
       {/* heading */}
