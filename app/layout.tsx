@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className}`}>
         <Provider>
-          <div className="sticky top-0 z-50 bg-black">
+          <div className="sticky top-0 z-50 bg-black lg:container px-0 lg:px-0">
             <Header />
           </div>
           <div>{children}</div>

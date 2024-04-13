@@ -34,7 +34,7 @@ const ProductSpecification = ({
   sortBy,
   searchedProducts,
 }: ProductSpecificationProps) => {
-  console.log("🚀 ~ searchedProducts:", searchedProducts);
+  // console.log("🚀 ~ searchedProducts:", searchedProducts);
   const [selectCategories, setSelectCategories] = useState<string[]>([]);
   const [selectPrices, setSelectPrices] = useState<string[]>([]);
   const [selectBrands, setSelectBrands] = useState<string[]>([]);
@@ -45,7 +45,7 @@ const ProductSpecification = ({
   // console.log("🚀 ~ sortByProducts:", sortByProducts);
 
   const { filterProduct, setFilterProduct } = useAppStore();
-  console.log("🚀 ~ filterProduct:", filterProduct);
+  // console.log("🚀 ~ filterProduct:---", filterProduct);
 
   function handleSelection(
     event: ChangeEvent<HTMLInputElement>,
@@ -95,7 +95,7 @@ const ProductSpecification = ({
 
   useEffect(() => {
     setFilterProduct(searchedProducts);
-  }, []);
+  }, [searchedProducts]);
 
   useEffect(() => {
     if (filterProduct.length) {
@@ -119,7 +119,7 @@ const ProductSpecification = ({
 
   // use;
   useEffect(() => {
-    if (sortBy) {
+    if (sortByProducts) {
       const filtered = sortByProduct({
         products: filterProduct,
         sortBy: sortByProducts,

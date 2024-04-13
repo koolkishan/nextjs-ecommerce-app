@@ -4,7 +4,8 @@ import { dealOfTheDay } from "@/data-access/products";
 import { ProductTypes } from "@/types";
 import { useAppStore } from "@/store";
 import { ProductSpecification } from "../product-specification";
-
+import FilterProducts from "../filter-products/filter-products";
+// import { usePathname } from "next/navigation";
 interface SearchProductsProps {
   searchField: string;
 }
@@ -12,7 +13,9 @@ const SearchProducts = ({ searchField }: SearchProductsProps) => {
   const [searchedProducts, setsearchedProducts] = useState<ProductTypes[] | []>(
     []
   );
-  const { searchTerm } = useAppStore();
+  // const pathname = usePathname()
+  const { searchTerm, filterProduct } = useAppStore();
+  console.log("🚀 ~ SearchProducts ~ filterProduct:", filterProduct);
   useEffect(() => {
     const items = dealOfTheDay.filter((item: ProductTypes) => {
       return item.title
@@ -24,7 +27,7 @@ const SearchProducts = ({ searchField }: SearchProductsProps) => {
     });
     if (items.length) setsearchedProducts(items);
   }, [searchField]);
- 
+
   return (
     <div className="w-full px-6 lg:container lg:px-0">
       {/* heading */}
@@ -56,6 +59,13 @@ const SearchProducts = ({ searchField }: SearchProductsProps) => {
             searchedProducts={searchedProducts}
           />
         </div>
+      </div>
+      <div>
+        {filterProduct.length ? (
+          <FilterProducts products={filterProduct} />
+        ) : (
+          <FilterProducts products={searchedProducts} />
+        )}
       </div>
     </div>
   );
