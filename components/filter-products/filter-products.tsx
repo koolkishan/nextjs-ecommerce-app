@@ -3,16 +3,23 @@ import { ProductTypes } from "@/types";
 import { IndianRupee } from "lucide-react";
 import Image from "next/image";
 import { FaStar } from "react-icons/fa";
+import { useParams, useRouter } from "next/navigation";
+
 interface FilterProductsProps {
   products: ProductTypes[];
 }
 const FilterProducts = ({ products }: FilterProductsProps) => {
+  const router = useRouter();
   return (
     <div className="w-full grid grid-cols-3 gap-16 px-6 lg:px-0 lg:container mt-28">
       {products.length > 0 &&
         products.map((product, index) => {
           return (
-            <div key={index} className="border-b-2 pb-3 border-custom-gray">
+            <div
+              key={index}
+              className="border-b-2 pb-3 border-custom-gray cursor-pointer"
+              
+            >
               <div className="relative bg-gray-400/20 flex  justify-center items-center rounded-xl">
                 <div className="absolute w-full  mt-[-200px] mr-10 text-end">
                   {/* <input
@@ -28,6 +35,9 @@ const FilterProducts = ({ products }: FilterProductsProps) => {
                   alt="singleproduct"
                   width={270}
                   height={270}
+                  onClick={()=>{
+                    router.push(`/product/${product.id}}`)
+                  }}
                 />
               </div>
               <p className="my-10 font-bold text-lg">{product.name}</p>
@@ -67,3 +77,8 @@ const FilterProducts = ({ products }: FilterProductsProps) => {
 };
 
 export default FilterProducts;
+
+
+/* eslint-disable react-hooks/exhaustive-deps */
+
+
