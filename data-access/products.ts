@@ -3,7 +3,14 @@ export const dealOfTheDay = [
     id: 1,
     name: "Croma 20000 mAh 22.5W Fast Charging Power Bank (2 Type A, 1 PD Type C & 1 Micro USB Port, Aluminium Casing, Apple Compatible, Black)",
     price: 2400,
-    image: '/deal-of-the-day/dealsOfTheDay1.png',
+    image: "/deal-of-the-day/dealsOfTheDay1.png",
+    subImage: [
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+    ],
     discountedPrice: 1799,
     rate: 4,
     totalRating: 30,
@@ -23,7 +30,14 @@ export const dealOfTheDay = [
     id: 2,
     name: "Croma 20000 mAh 22.5W Fast Charging Power Bank (2 Type A, 1 PD Type C & 1 Micro USB Port, Aluminium Casing, Apple Compatible, Black)",
     price: 2400,
-    image: '/deal-of-the-day/dealsOfTheDay1.png',
+    image: "/deal-of-the-day/dealsOfTheDay1.png",
+    subImage: [
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+    ],
     discountedPrice: 1799,
     rate: 3.5,
     totalRating: 30,
@@ -43,7 +57,15 @@ export const dealOfTheDay = [
     id: 3,
     name: "Croma 20000 mAh 22.5W Fast Charging Power Bank (2 Type A, 1 PD Type C & 1 Micro USB Port, Aluminium Casing, Apple Compatible, Black)",
     price: 2400,
-    image: '/deal-of-the-day/dealsOfTheDay1.png',
+    image: "/deal-of-the-day/dealsOfTheDay1.png",
+    subImage: [
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+    ],
+
     discountedPrice: 1799,
     rate: 1.5,
     totalRating: 30,
@@ -63,7 +85,14 @@ export const dealOfTheDay = [
     id: 4,
     name: "Croma 20000 mAh 22.5W Fast Charging Power Bank (2 Type A, 1 PD Type C & 1 Micro USB Port, Aluminium Casing, Apple Compatible, Black)",
     price: 2400,
-    image: '/deal-of-the-day/dealsOfTheDay1.png',
+    image: "/deal-of-the-day/dealsOfTheDay1.png",
+    subImage: [
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+    ],
     discountedPrice: 1799,
     rate: 3,
     totalRating: 30,
@@ -83,7 +112,14 @@ export const dealOfTheDay = [
     id: 6,
     name: "Croma 20000 mAh 22.5W Fast Charging Power Bank (2 Type A, 1 PD Type C & 1 Micro USB Port, Aluminium Casing, Apple Compatible, Black)",
     price: 2400,
-    image: '/deal-of-the-day/dealsOfTheDay1.png',
+    image: "/deal-of-the-day/dealsOfTheDay1.png",
+    subImage: [
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+    ],
     discountedPrice: 1799,
     rate: 5,
     totalRating: 30,
@@ -103,7 +139,14 @@ export const dealOfTheDay = [
     id: 7,
     name: "Croma 20000 mAh 22.5W Fast Charging Power Bank (2 Type A, 1 PD Type C & 1 Micro USB Port, Aluminium Casing, Apple Compatible, Black)",
     price: 2400,
-    image: '/deal-of-the-day/dealsOfTheDay1.png',
+    image: "/deal-of-the-day/dealsOfTheDay1.png",
+    subImage: [
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+      "/deal-of-the-day/dealsOfTheDay1.png",
+    ],
     discountedPrice: 1799,
     rate: 2.5,
     totalRating: 30,
@@ -121,8 +164,7 @@ export const dealOfTheDay = [
   },
 ];
 
-
-export const getProductFromId = (productId:string) => {
-  const product = dealOfTheDay.find(p => p.id === +productId);
+export const getProductFromId = (productId: string) => {
+  const product = dealOfTheDay.find((p) => p.id === +productId);
   return product;
-}
+};

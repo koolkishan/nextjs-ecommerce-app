@@ -12,6 +12,8 @@ export interface EcommerceAppSliceTypes {
   // setSettings: (data: SettingTypes) => void;
   openModal?: boolean;
   setOpenModal: (data: boolean) => void;
+  productCarouselImage?: string;
+  setProductCarouselImage: (data: string) => void;
 }
 
 const createEcommerceAppSlice: StateCreator<EcommerceAppSliceTypes> = (set, get) => ({
@@ -19,7 +21,12 @@ const createEcommerceAppSlice: StateCreator<EcommerceAppSliceTypes> = (set, get)
   setOpenModal: (open: boolean) => {
     set({ openModal: open });
   },
-
+  productCarouselImage: 'null',
+  setProductCarouselImage: (image: string ) => {
+    set({ productCarouselImage: image });
+  },
+  // weatherData: null,
+  // setWeatherData: (data: WeatherDataTypes) => {
 });
 
 export { createEcommerceAppSlice };
