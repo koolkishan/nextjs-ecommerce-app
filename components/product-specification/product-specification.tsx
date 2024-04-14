@@ -133,7 +133,7 @@ const ProductSpecification = ({
   };
 
   return (
-    <div>
+    <div className="mt-6">
       {category && (
         <Select>
           <SelectTrigger className="w-fit bg-gray-400/20 border-none h-8 mr-3">
