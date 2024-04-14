@@ -16,11 +16,9 @@ import { useParams, useRouter } from "next/navigation";
 import { useAppStore } from "@/store";
 interface MultipleProductCarouselPropes {
   products?: DealOfTheDayTypes[];
-  isCompareProduct?: boolean;
 }
 const MultipleProductCarousel = ({
   products,
-  isCompareProduct,
 }: MultipleProductCarouselPropes) => {
   const router = useRouter();
   const { compareProduct, setCompareProduct } = useAppStore();
@@ -45,20 +43,9 @@ const MultipleProductCarousel = ({
                   className="basis-1/2 sm:basis-1/2 md:basis-1/2 lg:basis-1/4  mx-3 "
                 >
                   <div className="relative flex flex-col px-4 py-5 sm:p-6 border rounded-lg">
-                    {isCompareProduct ? (
-                      <div
-                        className="absolute flex justify-end w-full ml-[-50px]  "
-                        onClick={() => {
-                          handleRemove(product.id, index);
-                        }}
-                      >
-                        <X size={22} className="cursor-pointer" />
-                      </div>
-                    ) : (
-                      <div className="absolute text-red-400 flex justify-end w-full ml-[-50px]">
-                        <FaHeart size={22} className="cursor-pointer" />
-                      </div>
-                    )}
+                    <div className="absolute text-red-400 flex justify-end w-full ml-[-50px]">
+                      <FaHeart size={22} className="cursor-pointer" />
+                    </div>
                     <div className="w-full flex-1 text-primary-txt">
                       <div className="inline-flex justify-center mt-10 rounded-lg w-full">
                         <Image
@@ -94,22 +81,6 @@ const MultipleProductCarousel = ({
                       </div>
                     </div>
                   </div>
-                  {isCompareProduct && (
-                    <>
-                      <div className="w-full ">
-                        <p className="sticky z-[10000] text-xl my-4 font-bold mr-2">
-                          Key Features
-                        </p>
-                      </div>
-                      <div className="text-xl my-5 border-r">
-                        {product?.keyFeatures?.map((feature, index) => (
-                          <li className="text-sm md:text-base p-2 " key={index}>
-                            <p className="inline">{feature}</p>
-                          </li>
-                        ))}
-                      </div>
-                    </>
-                  )}
                 </CarouselItem>
               ))}
           </CarouselContent>

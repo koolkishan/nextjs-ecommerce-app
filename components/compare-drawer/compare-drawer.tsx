@@ -32,7 +32,7 @@ const CompareDrawer = ({
         {/* <DrawerTrigger>Open</DrawerTrigger> */}
         <DrawerContent className=" w-full bg-black border-none h-[350px] px-6 lg:container lg:px-0 ">
           <div className="flex justify-center mt-10">
-            {Array.from({ length: 5 }).map((_, index) => {
+            {Array.from({ length: 4 }).map((_, index) => {
               // {compareProduct.map((product, index) => {
               if (compareProduct[index]) {
                 return (

@@ -6,7 +6,6 @@ interface SearchPageProps {
   };
 }
 const SearchPage = ({ params }: SearchPageProps) => {
-  console.log(params);
   return (
     <div>
         <SearchProducts searchField={params.searchField}/>

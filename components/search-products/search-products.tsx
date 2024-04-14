@@ -19,7 +19,6 @@ const SearchProducts = ({ searchField }: SearchProductsProps) => {
 
   // const pathname = usePathname()
   const { searchTerm, filterProduct } = useAppStore();
-  console.log("🚀 ~ SearchProducts ~ filterProduct:", filterProduct);
 
   useEffect(() => {
     const items = dealOfTheDay.filter((item: ProductTypes) => {

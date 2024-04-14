@@ -35,12 +35,12 @@ const FilterProducts = ({ products, setIsOpenDrawer }: FilterProductsProps) => {
       }
 
       // If the product is not selected and we haven't reached the limit, add the product
-      if (prevSelected.length < 5) {
+      if (prevSelected.length < 4) {
         return [...prevSelected, product];
       }
 
       // If we reach the limit, set compare limit exceeded flag
-      if (prevSelected.length === 5) {
+      if (prevSelected.length === 4) {
         setCompareLimitExceeded(true);
       }
 
@@ -102,7 +102,7 @@ const FilterProducts = ({ products, setIsOpenDrawer }: FilterProductsProps) => {
                 />
               </div>
               <div>
-                <p className="my-10 font-bold text-lg">{product.name}</p>
+                <p className="mt-10 mb-5 font-bold text-lg">{product.name}</p>
                 <div className="flex items-center text-lg text-custom-btn ">
                   <p className=" font-bold mr-1">{product.rate}</p>
                   <div className="mr-3 ">

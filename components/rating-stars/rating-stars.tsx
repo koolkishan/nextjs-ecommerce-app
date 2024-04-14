@@ -30,7 +30,7 @@ const StarRating = ({ rating }: { rating: number }) => {
   return (
     <div className="flex">
       {stars.map((star, index) => (
-        <span className="mx-1" key={index}>
+        <span className="mx-[2px]" key={index}>
           {star}
         </span>
       ))}

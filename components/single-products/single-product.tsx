@@ -35,7 +35,6 @@ const SingleProduct = ({ productId }: SingleProductProps) => {
   }
   const product = getProductFromId(productId.split("%")[0]);
   const handleAddToCart = (product: ProductTypes) => {
-    console.log(product, "?>:>:>:>:>:");
     setOpenModal(true);
     const updatedCart = [...addToCartProduct, product];
     setAddToCartProduct(updatedCart);

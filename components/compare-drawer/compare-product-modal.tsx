@@ -16,7 +16,7 @@ const CompareModal = () => {
       >
         <DialogContent className="bg-primary-dark border-none">
           <DialogDescription className="text-destructive text-xl">
-            You can add maximum 5 items to compare.
+            You can add maximum 4 items to compare.
           </DialogDescription>
         </DialogContent>
       </Dialog>
