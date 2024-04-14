@@ -25,26 +25,28 @@ const FilterProducts = ({ products, setIsOpenDrawer }: FilterProductsProps) => {
   const router = useRouter();
 
   const handleCompareChange = (product: ProductTypes) => {
-    if(compareLimitExceeded && selectedForCompare.length === 5) {
-      setSelectedForCompare((prevSelected) => {
-        if (prevSelected.includes(product)) {
-          return prevSelected.filter((item) => item !== product);
-        } else {
-          return [...prevSelected, product];
-        }
-      });
-    }
-    if (selectedForCompare.length === 5 ) {
-      setCompareLimitExceeded(true);
-    } else {
-      setSelectedForCompare((prevSelected) => {
-        if (prevSelected.includes(product)) {
-          return prevSelected.filter((item) => item !== product);
-        } else {
-          return [...prevSelected, product];
-        }
-      });
-    }
+    setSelectedForCompare((prevSelected) => {
+      // Check if the product is already selected
+      const isProductSelected = prevSelected.includes(product);
+
+      // If the product is already selected, remove it
+      if (isProductSelected) {
+        return prevSelected.filter((item) => item !== product);
+      }
+
+      // If the product is not selected and we haven't reached the limit, add the product
+      if (prevSelected.length < 5) {
+        return [...prevSelected, product];
+      }
+
+      // If we reach the limit, set compare limit exceeded flag
+      if (prevSelected.length === 5) {
+        setCompareLimitExceeded(true);
+      }
+
+      // Return previous selection if we reached the limit and can't add more products
+      return prevSelected;
+    });
   };
 
   useEffect(() => {

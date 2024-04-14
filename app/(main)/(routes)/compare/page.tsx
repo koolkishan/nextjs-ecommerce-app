@@ -1,7 +1,11 @@
+import { CompareProductCarousel } from "@/components/carousel";
+
 const CompareProducPage = () => {
-    return ( 
-        <div>Compare Product Page</div>
-     );
-}
- 
+  return (
+    <div>
+      <CompareProductCarousel />
+    </div>
+  );
+};
+
 export default CompareProducPage;

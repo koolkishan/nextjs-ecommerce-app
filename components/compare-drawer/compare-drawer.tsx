@@ -1,14 +1,6 @@
 import { useAppStore } from "@/store";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
+import { useRouter } from "next/navigation";
+import { Drawer, DrawerClose, DrawerContent } from "@/components/ui/drawer";
 import { Button } from "../ui/button";
 import { Dispatch, SetStateAction } from "react";
 import Image from "next/image";
@@ -22,12 +14,17 @@ const CompareDrawer = ({
   isOpenDrawer,
   setIsOpenDrawer,
 }: CompareDrawerProps) => {
+  const router = useRouter();
   const { compareProduct, setCompareProduct } = useAppStore();
+
   const handleRemove = (id: number, index: number) => {
     const newCompareProduct = compareProduct
       .slice(0, index)
       .concat(compareProduct.slice(index + 1));
     setCompareProduct(newCompareProduct);
+  };
+  const handleClick = () => {
+    router.push("/compare");
   };
   return (
     <div className="w-full">
@@ -89,7 +86,10 @@ const CompareDrawer = ({
             })}
             <div className="flex flex-col w-40 items-center justify-center">
               <div className="w-full">
-                <Button className="text-primary-dark bg-custom-btn w-full my-2 hover:bg-custom-btn">
+                <Button
+                  onClick={handleClick}
+                  className="text-primary-dark bg-custom-btn w-full my-2 hover:bg-custom-btn"
+                >
                   Compare
                 </Button>
               </div>
