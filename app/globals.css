@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
   :root {
     --primary-dark: #191919;
@@ -11,7 +12,6 @@
     --custom-txt: #74dda9;
     --custom-gray: #808080;
 
-    
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 25, 25, 25;
     --background-end-rgb: 25, 25, 25;

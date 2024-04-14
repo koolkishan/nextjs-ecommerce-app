@@ -10,13 +10,21 @@ import { FaHeart } from "react-icons/fa";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import { SingleProductCarousel } from "../carousel";
 import { useAppStore } from "@/store";
+import { Button } from "../ui/button";
+import { AddToCartModal } from ".";
 
 interface SingleProductProps {
   productId: string;
 }
 const SingleProduct = ({ productId }: SingleProductProps) => {
   const [isMounted, setIsMounted] = useState<boolean>(false);
-  const { productCarouselImage } = useAppStore();
+  const {
+    productCarouselImage,
+    setOpenModal,
+    setAddToCartProduct,
+    addToCartProduct,
+  } = useAppStore();
+  console.log("🚀 ~ SingleProduct ~ addToCartProduct:", addToCartProduct);
   // console.log(productCarouselImage);
   useEffect(() => {
     setIsMounted(true);
@@ -26,7 +34,12 @@ const SingleProduct = ({ productId }: SingleProductProps) => {
     return null;
   }
   const product = getProductFromId(productId.split("%")[0]);
-  // console.log(product, "product");
+  const handleAddToCart = (product: ProductTypes) => {
+    console.log(product, "?>:>:>:>:>:");
+    setOpenModal(true);
+    const updatedCart = [...addToCartProduct, product];
+    setAddToCartProduct(updatedCart);
+  };
   return (
     <div className="md:flex w-full px-6 lg:container lg:px-0 mt-4">
       <div className="relative w-full mt-5 md:w-1/2 md:mr-5">
@@ -87,13 +100,21 @@ const SingleProduct = ({ productId }: SingleProductProps) => {
           </div>
           {/* Buttons Section */}
           <div className="flex justify-between items-center my-4">
-            <p className=" text-primary-dark font-medium bg-custom-btn px-4 py-2 rounded-lg cursor-pointer">
+            <Button className=" text-primary-dark font-medium bg-custom-btn px-4 py-2 rounded-lg cursor-pointer">
               Buy Now
-            </p>
-            <p className=" border border-white px-4 py-2 rounded-lg cursor-pointer">
+            </Button>
+            <Button
+              onClick={() => {
+                if (product) {
+                  handleAddToCart(product);
+                }
+              }}
+              className=" border border-white px-4 py-2 rounded-lg cursor-pointer bg-transparent"
+            >
               Add to Cart
-            </p>
+            </Button>
           </div>
+          <AddToCartModal products={product} />
         </div>
         {/* <div className="border border-custom-gray my-2"></div> */}
         <div className="rounded-lg text-xl my-4 border border-custom-gray">

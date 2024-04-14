@@ -11,10 +11,11 @@ export interface EcommerceAppSliceTypes {
   setFilterProduct: (data: ProductTypes[]) => void;
   compareProduct: ProductTypes[];
   setCompareProduct: (data: ProductTypes[]) => void;
+  addToCartProduct: ProductTypes[];
+  setAddToCartProduct: (data: ProductTypes[]) => void;
   compareLimitExceeded?: boolean;
   setCompareLimitExceeded: (data: boolean) => void;
 }
-
 const createEcommerceAppSlice: StateCreator<EcommerceAppSliceTypes> = (set, get) => ({
   openModal: false,
   setOpenModal: (open: boolean) => {
@@ -39,6 +40,10 @@ const createEcommerceAppSlice: StateCreator<EcommerceAppSliceTypes> = (set, get)
   compareLimitExceeded: false,
   setCompareLimitExceeded: (open: boolean) => {
     set({ compareLimitExceeded: open });
+  },
+  addToCartProduct:[],
+  setAddToCartProduct: (products: ProductTypes[]) => {
+    set({ addToCartProduct: products });
   },
 });
 
