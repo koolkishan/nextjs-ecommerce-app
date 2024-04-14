@@ -5,6 +5,8 @@ import { ProductTypes } from "@/types";
 import { useAppStore } from "@/store";
 import { ProductSpecification } from "../product-specification";
 import FilterProducts from "../filter-products/filter-products";
+import { CompareDrawer } from "../compare-drawer";
+import CompareModal from "../compare-drawer/compare-product-modal";
 // import { usePathname } from "next/navigation";
 interface SearchProductsProps {
   searchField: string;
@@ -13,9 +15,12 @@ const SearchProducts = ({ searchField }: SearchProductsProps) => {
   const [searchedProducts, setsearchedProducts] = useState<ProductTypes[] | []>(
     []
   );
+  const [isOpenDrawer, setIsOpenDrawer] = useState<boolean>(false);
+
   // const pathname = usePathname()
   const { searchTerm, filterProduct } = useAppStore();
   console.log("🚀 ~ SearchProducts ~ filterProduct:", filterProduct);
+
   useEffect(() => {
     const items = dealOfTheDay.filter((item: ProductTypes) => {
       return item.title
@@ -60,13 +65,26 @@ const SearchProducts = ({ searchField }: SearchProductsProps) => {
           />
         </div>
       </div>
+      {/* Filter products  */}
       <div>
         {filterProduct.length ? (
-          <FilterProducts products={filterProduct} />
+          <FilterProducts
+            products={filterProduct}
+            setIsOpenDrawer={setIsOpenDrawer}
+          />
         ) : (
-          <FilterProducts products={searchedProducts} />
+          <FilterProducts
+            products={searchedProducts}
+            setIsOpenDrawer={setIsOpenDrawer}
+          />
         )}
       </div>
+      {/* compare drawer */}
+      <CompareDrawer
+        isOpenDrawer={isOpenDrawer}
+        setIsOpenDrawer={setIsOpenDrawer}
+      />
+      <CompareModal />
     </div>
   );
 };

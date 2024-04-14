@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useAppStore } from "@/store";
 import { ProductTypes } from "@/types";
 import { IndianRupee } from "lucide-react";
@@ -9,27 +9,51 @@ import { Button } from "../ui/button";
 
 interface FilterProductsProps {
   products: ProductTypes[];
+  setIsOpenDrawer: Dispatch<SetStateAction<boolean>>;
 }
 
-const FilterProducts = ({ products }: FilterProductsProps) => {
+const FilterProducts = ({ products, setIsOpenDrawer }: FilterProductsProps) => {
   const [selectedForCompare, setSelectedForCompare] = useState<ProductTypes[]>(
     []
   );
+  const {
+    compareProduct,
+    setCompareProduct,
+    compareLimitExceeded,
+    setCompareLimitExceeded,
+  } = useAppStore();
   const router = useRouter();
 
   const handleCompareChange = (product: ProductTypes) => {
-    setSelectedForCompare((prevSelected) => {
-      if (prevSelected.includes(product)) {
-        return prevSelected.filter((item) => item !== product);
-      } else {
-        return [...prevSelected, product];
-      }
-    });
+    if(compareLimitExceeded && selectedForCompare.length === 5) {
+      setSelectedForCompare((prevSelected) => {
+        if (prevSelected.includes(product)) {
+          return prevSelected.filter((item) => item !== product);
+        } else {
+          return [...prevSelected, product];
+        }
+      });
+    }
+    if (selectedForCompare.length === 5 ) {
+      setCompareLimitExceeded(true);
+    } else {
+      setSelectedForCompare((prevSelected) => {
+        if (prevSelected.includes(product)) {
+          return prevSelected.filter((item) => item !== product);
+        } else {
+          return [...prevSelected, product];
+        }
+      });
+    }
   };
 
+  useEffect(() => {
+    setSelectedForCompare(compareProduct);
+  }, [compareProduct]);
+
   const handleCompare = () => {
-    // Implement comparison logic here (e.g., navigate to comparison page)
-    console.log("Comparing products:", selectedForCompare);
+    setCompareProduct(selectedForCompare);
+    setIsOpenDrawer((prev) => !prev);
   };
 
   return (
