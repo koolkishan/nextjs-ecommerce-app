@@ -16,7 +16,7 @@ const CompareProductCarousel = () => {
   return (
     // <MultipleProductCarousel products={compareProduct} isCompareProduct={true}/>
     // <div>comapare</div>
-    <div className="px-6 lg:container lg:px-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-3 mt-8">
+    <div className="px-6 text-primary-white lg:container lg:px-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-3 mt-8">
       {compareProduct &&
         compareProduct.map((product, index) => {
           return (
@@ -35,7 +35,9 @@ const CompareProductCarousel = () => {
                     />
                   </div>
                   <div className="mx-4 my-8">
-                    <p className="text-xl font-medium">{product.name}</p>
+                    <p className="text-xl font-medium  line-clamp-3">
+                      {product.name}
+                    </p>
                     <div className="flex items-center">
                       <p className="text-xl font-medium my-4">
                         ₹

@@ -59,7 +59,7 @@ const FilterProducts = ({ products, setIsOpenDrawer }: FilterProductsProps) => {
   };
 
   return (
-    <div className="w-full grid md:grid-cols-2 lg:grid-cols-3 gap-16 px-6 lg:px-0 lg:container mt-20">
+    <div className="w-full text-primary-white grid md:grid-cols-2 lg:grid-cols-3 gap-16 px-6 lg:px-0 lg:container mt-20">
       {products.length > 0 &&
         products.map((product, index) => (
           <div
@@ -102,7 +102,7 @@ const FilterProducts = ({ products, setIsOpenDrawer }: FilterProductsProps) => {
                 />
               </div>
               <div>
-                <p className="mt-10 mb-5 font-bold text-lg">{product.name}</p>
+                <p className="mt-10 mb-5 font-bold text-lg  line-clamp-2">{product.name}</p>
                 <div className="flex items-center text-lg text-primary-btn ">
                   <p className=" font-bold mr-1">{product.rate}</p>
                   <div className="mr-3 ">

@@ -33,7 +33,7 @@ const SearchProducts = ({ searchField }: SearchProductsProps) => {
   }, [searchField]);
 
   return (
-    <div className="w-full px-6 lg:container lg:px-0">
+    <div className="w-full px-6 lg:container lg:px-0 text-primary-white">
       {/* heading */}
       <div className="w-full h-16 flex items-center">
         <p className="text-2xl font-bold">
