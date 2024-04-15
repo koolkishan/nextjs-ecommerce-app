@@ -13,8 +13,10 @@ export interface DealOfTheDayTypes {
 
   export interface ProductTypes {
     id: number;
+    title: string;
     name: string;
     price: number;
+    brand: string;
     image: string;
     discountedPrice: number;
     rate: number;

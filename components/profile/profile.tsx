@@ -10,15 +10,15 @@ const Profile = () => {
   const { setOpenModal } = useAppStore();
   const router = useRouter();
   const user = useAuthUser();
-  console.log("🚀 ~ Profile ~ user :", user);
+  // console.log("🚀 ~ Profile ~ user :", user);
 
   const handleClick = () => {
     if (!user) {
-      console.log("first");
+      // console.log("first");
       router.push("/my-account");
       setOpenModal(true);
     } else {
-      console.log("second");
+      // console.log("second");
       signOut();
     }
   };

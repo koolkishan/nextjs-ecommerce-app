@@ -76,7 +76,7 @@ const CreateAccountForm = () => {
             <FormSuccess message={success} />
             <Button
               disabled={isLoading}
-              className="w-full bg-custom-btn text-black hover:bg-custom-btn"
+              className="w-full bg-primary-btn text-black hover:bg-primary-btn"
             >
               Continue
             </Button>

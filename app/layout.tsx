@@ -21,10 +21,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className}`}>
         <Provider>
-          <div className="sticky top-0 z-50 bg-black">
+          <div className="sticky top-0 w-full z-50 bg-black ">
             <Header />
           </div>
-          <div>{children}</div>
+          <div className="bg-primary-dark">{children}</div>
         </Provider>
       </body>
     </html>

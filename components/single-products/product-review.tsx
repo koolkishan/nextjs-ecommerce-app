@@ -34,7 +34,6 @@ const ProductReview = () => {
 
   const onSubmit = async (data: z.infer<typeof reviewSchema>) => {
     try {
-      console.log(data);
       setSuccess("Review submitted successfully!");
       form.reset();
     } catch (err) {
@@ -47,12 +46,12 @@ const ProductReview = () => {
   };
 
   return (
-    <div className="px-6 lg:container lg:px-0">
+    <div className="px-6 lg:container lg:px-0 text-primary-txt">
       <p className="text-2xl md:text-4xl font-bold">Product Reviews</p>
       <div className="rounded-md">
         {Array.from({ length: 5 }).map((_, index) => {
           return (
-            <div key={index} className="bg-[#1f1d1d] py-4 px-4 my-6">
+            <div key={index} className="bg-secondary-dark py-4 px-4 my-6">
               <p className="text-xl font-bold">John Doe</p>
               <p className="px-4">product review {index}</p>
             </div>
@@ -60,7 +59,7 @@ const ProductReview = () => {
         })}
       </div>
       <div
-        className="cursor-pointer px-2 py-4 rounded-lg bg-custom-btn w-36 mb-4"
+        className="cursor-pointer px-2 py-4 rounded-lg bg-primary-btn w-36 mb-4"
         onClick={handleClick}
       >
         <p className="text-primary-dark font-medium"> Write a Review</p>
@@ -115,7 +114,7 @@ const ProductReview = () => {
                   <Button
                     type="submit"
                     disabled={isLoading}
-                    className="bg-custom-btn hover:bg-custom-btn text-black mt-5"
+                    className="bg-primary-btn hover:bg-primary-btn text-black mt-5"
                   >
                     Submit
                   </Button>
