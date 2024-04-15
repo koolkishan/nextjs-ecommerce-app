@@ -19,18 +19,18 @@ const StarRating = ({ rating }: { rating: number }) => {
 
   const stars = Array.from({ length: 5 }, (_, index) => {
     if (index < fullStarsCount) {
-      return <FaStar size={22} key={index} />;
+      return <FaStar size={18} key={index} />;
     } else if (index === fullStarsCount && hasHalfStar) {
-      return <FaStarHalfAlt size={22} key="half-star" />;
+      return <FaStarHalfAlt size={18} key="half-star" />;
     } else {
-      return <FaRegStar size={22} key={`empty-${index}`} />;
+      return <FaRegStar size={18} key={`empty-${index}`} />;
     }
   });
 
   return (
     <div className="flex">
       {stars.map((star, index) => (
-        <span className="mx-[2px]" key={index}>
+        <span className="mx-[2px] " key={index}>
           {star}
         </span>
       ))}

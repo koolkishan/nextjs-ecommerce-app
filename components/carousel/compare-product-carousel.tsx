@@ -20,7 +20,7 @@ const CompareProductCarousel = () => {
       {compareProduct &&
         compareProduct.map((product, index) => {
           return (
-            <div>
+            <div key={index}>
               <div className="bg-black/25 rounded-xl">
                 <div className="pb-1">
                   <div className="flex justify-end mt-4 mr-4">
@@ -43,7 +43,7 @@ const CompareProductCarousel = () => {
                           "en-IN"
                         )}
                       </p>
-                      <p className="text-sm font-medium my-4 line-through text-custom-gray">
+                      <p className="text-sm font-medium my-4 line-through text-primary-gray">
                         ₹{Number(product.price).toLocaleString("en-IN")}
                       </p>
                       <p className="mx-4">
@@ -54,7 +54,7 @@ const CompareProductCarousel = () => {
                         %off
                       </p>
                     </div>
-                    <p className="text-custom-gray">
+                    <p className="text-primary-gray">
                       <StarRating rating={product.rate} />
                     </p>
                   </div>

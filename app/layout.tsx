@@ -24,7 +24,7 @@ export default function RootLayout({
           <div className="sticky top-0 w-full z-50 bg-black ">
             <Header />
           </div>
-          <div>{children}</div>
+          <div className="bg-primary-dark">{children}</div>
         </Provider>
       </body>
     </html>

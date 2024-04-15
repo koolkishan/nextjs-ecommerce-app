@@ -64,7 +64,7 @@ const FilterProducts = ({ products, setIsOpenDrawer }: FilterProductsProps) => {
         products.map((product, index) => (
           <div
             key={index}
-            className="border-b-2 pb-3 border-custom-gray cursor-pointer w-full"
+            className="border-b-2 pb-3 border-primary-gray cursor-pointer w-full"
           >
             <div className="w-full md:block">
               <div className="relative md:w-full bg-gray-400/20 flex flex-col items-center rounded-xl">
@@ -84,7 +84,7 @@ const FilterProducts = ({ products, setIsOpenDrawer }: FilterProductsProps) => {
                   <div className="flex items-center gap-2 px-3 py-2 rounded-2xl bg-black/20">
                     <input
                       type="checkbox"
-                      className="w-5 h-5 text-primary-txt border rounded-md"
+                      className="w-5 h-5 text-primary-txt border rounded-md accent-blue-500"
                       onChange={() => handleCompareChange(product)}
                       checked={selectedForCompare.includes(product)}
                     />
@@ -103,7 +103,7 @@ const FilterProducts = ({ products, setIsOpenDrawer }: FilterProductsProps) => {
               </div>
               <div>
                 <p className="mt-10 mb-5 font-bold text-lg">{product.name}</p>
-                <div className="flex items-center text-lg text-custom-btn ">
+                <div className="flex items-center text-lg text-primary-btn ">
                   <p className=" font-bold mr-1">{product.rate}</p>
                   <div className="mr-3 ">
                     <FaStar />
@@ -116,13 +116,13 @@ const FilterProducts = ({ products, setIsOpenDrawer }: FilterProductsProps) => {
                     <span className="text-2xl">₹</span>
                     {Number(product.discountedPrice).toLocaleString("us")}
                   </p>
-                  <p className="line-through  text-custom-gray">
+                  <p className="line-through  text-primary-gray">
                     <p className="mx-3">
                       <IndianRupee className="inline" size={17} />
                       {Number(product.price).toLocaleString("us")}
                     </p>
                   </p>
-                  <p className="text-sm mr-3 text-custom-gray">{`(Save ₹${Number(+product.price - +product.discountedPrice).toLocaleString("us")})`}</p>
+                  <p className="text-sm mr-3 text-primary-gray">{`(Save ₹${Number(+product.price - +product.discountedPrice).toLocaleString("us")})`}</p>
                   <p className="text-[12px] border px-1 rounded-md font-bold">
                     {(
                       100 -

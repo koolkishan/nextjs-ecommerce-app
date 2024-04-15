@@ -1,4 +1,5 @@
 "use client";
+
 import { useAppStore } from "@/store";
 import Image from "next/image";
 import { StarRating } from "../rating-stars";
@@ -9,79 +10,135 @@ const Cart = () => {
   // Access the cart products from your store
   const { addToCartProduct } = useAppStore();
 
+  // Check if cart is empty
+  const isCartEmpty = !addToCartProduct || addToCartProduct.length === 0;
+
+  // Determine the layout for order summary based on screen size
+  const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 0;
+  const isLargeScreen = screenWidth >= 768; // Adjust the value if needed
+
   return (
-    <div className="h-full w-full">
-      <div className="py-6 w-full">
-        <p className="font-bold text-[20px]">YOUR CART</p>
-      </div>
-      <div className="flex">
-        {
-          // If there are products in the cart
-          addToCartProduct && addToCartProduct.length > 0 ? (
-            <div className="flex flex-wrap w-[70%] py-4">
-              {addToCartProduct.map((product, index) => (
-                <div className=" bg-white ">
-                  <div key={index} className="flex w-full px-4">
-                    <div className="mr-4">
-                      <Image
-                        src="/deals-of-the-day/dealsOfTheDay1.png"
-                        alt={product.name}
-                        width={300}
-                        height={350}
-                      />
+    <div className="w-full h-full lg:container px-6 lg:px-0">
+      {/* Heading */}
+      {!isCartEmpty && (
+        <div className="py-6 w-full">
+          <p className="font-bold text-[20px]">YOUR CART</p>
+        </div>
+      )}
+
+      {isCartEmpty ? (
+        // If cart is empty, render empty cart view
+        <div className="w-full h-[500px] flex flex-col items-center justify-center">
+          <Image
+            src="/cart_empty.png"
+            alt="Cart Empty"
+            width={400}
+            height={400}
+          />
+          <p className="text-xl font-bold">Cart is empty</p>
+        </div>
+      ) : (
+        // If cart has items, render cart products and order summary
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Cart products */}
+          <div className="md:col-span-2">
+            {addToCartProduct.map((product, index) => (
+              <div key={index} className="mb-6">
+                {/* Product details */}
+                <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+                  {/* Product image */}
+                  <div className="w-[170px] h-[170px] md:col-span-1">
+                    <Image
+                      src="/deals-of-the-day/dealsOfTheDay1.png"
+                      alt={product.name}
+                      width={300}
+                      height={350}
+                    />
+                  </div>
+
+                  {/* Product details */}
+                  <div className="md:col-span-4 md:pl-10">
+                    {/* Product name */}
+                    <p className="font-medium text-base line-clamp-2 md:text-xl">
+                      {product.name}
+                    </p>
+
+                    {/* Product rating */}
+                    <p className="text-primary-gray my-2">
+                      <StarRating rating={product.rate} />
+                    </p>
+
+                    {/* Price details (small screen) */}
+                    <div className="block md:hidden">
+                      <div className="flex flex-col md:items-end md:border-b border-black">
+                        <p className="font-bold">
+                          <span>₹</span>
+                          {product.discountedPrice.toLocaleString("en-IN")}
+                        </p>
+                        <p className="text-sm mt-[-5px]">(Inc. all taxes)</p>
+                      </div>
+
+                      {/* Savings details */}
+                      <div className="flex gap-1 my-2">
+                        <p className="line-through text-sm">
+                          <span>MRP ₹</span>
+                          {product.price.toLocaleString("en-IN")}
+                        </p>
+                        <p className="text-13 text-primary-gray">{`(Save ₹${(product.price - product.discountedPrice).toLocaleString("en-IN")})`}</p>
+                      </div>
                     </div>
-                    <div className="flex flex-col mr-10">
-                      <p className="font-medium text-xl">{product.name}</p>
-                      <p className="text-custom-gray my-4">
-                        <StarRating rating={product.rate} />
+
+                    {/* Remove button */}
+                    <Button
+                      className="bg-transparent hover:bg-transparent border border-black px-10 text-primary-dark font-bold"
+                    >
+                      Remove
+                    </Button>
+                  </div>
+
+                  {/* Price details (large screen) */}
+                  <div className="hidden md:block md:col-span-1 md:mx-2">
+                    {/* Discounted price */}
+                    <div className="flex flex-col md:items-end">
+                      <p className="md:text-2xl font-bold">
+                        <span>₹</span>
+                        {product.discountedPrice.toLocaleString("en-IN")}
                       </p>
-                      <div className="mt-2">
-                        <Button className="bg-transparent hover:bg-transparent border border-black px-10 text-primary-dark font-bold ">
-                          Remove
-                        </Button>
-                      </div>
+                      <p className="md:text-sm mb-2">(Inc. all taxes)</p>
                     </div>
-                    <div className="w-1/2">
-                      <div className="flex flex-col items-end border-b  border-black">
-                        <p className="text-2xl font-bold">
-                          <span className="">₹</span>
-                          {Number(product.discountedPrice).toLocaleString(
-                            "en-IN"
-                          )}
-                        </p>
-                        <p className="text-xl mb-2">{`(Inc. all Taxes)`}</p>
-                      </div>
-                      <div>
-                        <p className="text-xl text-end mt-2 line-through">
-                          <span>MRP</span>{" "}
-                          <IndianRupee className="inline line-through" />
-                          {Number(product.price).toLocaleString("en-IN")}
-                        </p>
-                        <p className="text-end text-[14px] text-custom-gray">{`Save (₹${+product.price - +product.discountedPrice})`}</p>
-                      </div>
+
+                    {/* Original price */}
+                    <div className="w-28 border-primary-dark ml-2 float-right border-b-[1px]"></div>
+                    <div>
+                      <p className="md:text-xl md:text-end mt-2 line-through">
+                        <span>MRP ₹</span>
+                        {product.price.toLocaleString("en-IN")}
+                      </p>
+                      <p className="md:text-end text-14 text-primary-gray">{`Save (₹${(product.price - product.discountedPrice).toLocaleString("en-IN")})`}</p>
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div className=" w-[70%]">
-              <p>No products in the cart.</p>
-            </div>
-          )
-        }
-        {addToCartProduct && addToCartProduct.length > 0 ? (
-          <div className="w-[30%] flex flex-col justify-start bg-white ml-4 mt-4 p-3">
-            <p className="text-2xl font-bold">{`Order Summary ( ${addToCartProduct.length} items )`}</p>
-            <div className="flex w-full justify-center items-center">
-              <div className="flex flex-col justify-center items-start w-1/2 text-xl mt-4">
-                <p className="mb-3">Original Price</p>
-                <p className="mb-3">Saving</p>
-                <p className="mb-3">Total</p>
               </div>
-              <div className="flex flex-col justify-center items-end w-1/2 text-xl mt-4">
+            ))}
+          </div>
+
+          {/* Order details */}
+          {/* Conditionally render order summary either to the right side of the cart products (large screens) or at the bottom (small screens) */}
+          <div className={isLargeScreen ? "md:col-span-1" : "w-full col-span-2 p-2 bg-white"}>
+            <div className="text-xl font-bold">
+              <p>Order Summary ({addToCartProduct.length} items)</p>
+            </div>
+
+            {/* Price and saving calculations */}
+            <div className="grid grid-cols-2 w-full">
+              <div>
+                <p className="mt-4">Original Price</p>
+                <p className="my-4">Saving</p>
+                <p className="my-4">Total</p>
+              </div>
+              <div className="text-end">
                 {/* Calculate Original Price */}
-                <p className="mb-3">
+                <p className="mt-4">
                   <IndianRupee className="inline" />
                   {addToCartProduct
                     .reduce((total, product) => total + product.price, 0)
@@ -89,7 +146,7 @@ const Cart = () => {
                 </p>
 
                 {/* Calculate Saving */}
-                <p className="mb-3">
+                <p className="my-4">
                   -<IndianRupee className="inline" />
                   {addToCartProduct
                     .reduce(
@@ -101,27 +158,22 @@ const Cart = () => {
                 </p>
 
                 {/* Calculate Total */}
-                <p className="mb-3">
+                <p className="my-3">
                   <IndianRupee className="inline" />
                   {addToCartProduct
-                    .reduce(
-                      (total, product) => total + product.discountedPrice,
-                      0
-                    )
+                    .reduce((total, product) => total + product.discountedPrice, 0)
                     .toLocaleString("en-IN")}
                 </p>
               </div>
             </div>
-            {/* Add more total price calculation and display logic as needed */}
-            <Button className="bg-custom-btn text-lg font-medium hover:bg-custom-btn text-primary-dark py-2">
-              {" "}
-              Checkout{" "}
+
+            {/* Checkout button */}
+            <Button className="w-full bg-primary-btn text-lg font-medium hover:bg-primary-btn text-primary-dark py-2">
+              Checkout
             </Button>
           </div>
-        ) : (
-          ""
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

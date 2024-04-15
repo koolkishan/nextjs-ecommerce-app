@@ -68,7 +68,7 @@ const MultipleProductCarousel = ({
                             <IndianRupee className="inline" />
                             {Number(product.price).toLocaleString("us")}
                           </p>
-                          <p className="text-sm flex items-center text-custom-gray line-through mx-2">
+                          <p className="text-sm flex items-center text-primary-gray line-through mx-2">
                             <span className="text-xl">₹</span>
                             {Number(product.discountedPrice).toLocaleString(
                               "us"

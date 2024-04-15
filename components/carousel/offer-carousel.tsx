@@ -13,7 +13,7 @@ import { offerImage } from "@/data-access/offer-images";
 
 const OfferCarousel = () => {
   const plugin = React.useRef(
-    Autoplay({ delay: 1000, stopOnInteraction: true })
+    Autoplay({ delay: 1500, stopOnInteraction: true })
   );
 
   return (

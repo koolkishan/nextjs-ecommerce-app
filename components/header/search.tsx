@@ -58,15 +58,15 @@ const Search = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative ">
       <Input
         onChange={handleChange}
         onKeyDown={handleKeyDown}
-        className="text-black"
+        className="text-black "
         placeholder="What are you looking for?"
         // value={searchTerm ? searchTerm : ''}
       />
-      <div className="absolute hidden md:block w-full bg-primary-dark shadow-2xl rounded-lg ">
+      <div className="absolute  w-full bg-primary-dark shadow-2xl rounded-lg ">
         {searchItem &&
           searchItem.map((product: ProductTypes, index: number) => {
             const isSelected = index === selectedIndex;

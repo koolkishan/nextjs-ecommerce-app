@@ -38,7 +38,7 @@ const CompareDrawer = ({
                 return (
                   <div
                     key={index}
-                    className="flex mr-3 w-[200px]  border border-custom-gray rounded-lg"
+                    className="flex mr-3 w-[200px]  border border-primary-gray rounded-lg"
                   >
                     <div className="bg-gray-400/20 ">
                       <div className="flex justify-end mt-3 mr-3">
@@ -88,7 +88,7 @@ const CompareDrawer = ({
               <div className="w-full">
                 <Button
                   onClick={handleClick}
-                  className="text-primary-dark bg-custom-btn w-full my-2 hover:bg-custom-btn"
+                  className="text-primary-dark bg-primary-btn w-full my-2 hover:bg-primary-btn"
                 >
                   Compare
                 </Button>

@@ -161,7 +161,7 @@ const OtpInput = ({ email }: OtpInputProps) => {
 
           <Button
             type="submit"
-            className="w-full bg-custom-btn py-6 text-base font-medium text-black"
+            className="w-full bg-primary-btn py-6 text-base font-medium text-black"
             disabled={!isConfirmationFormValid || isConfirmationFormLoading}
           >
             {isConfirmationFormLoading ? "Submitting..." : "Submit"}
@@ -175,7 +175,7 @@ const OtpInput = ({ email }: OtpInputProps) => {
           onClick={() => {
             resendOtpthroughMail(email);
           }}
-          className="text-custom-txt cursor-pointer font-bold underline"
+          className="text-secondary-txt cursor-pointer font-bold underline"
         >
           Resend code
         </Button>

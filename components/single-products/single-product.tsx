@@ -40,7 +40,7 @@ const SingleProduct = ({ productId }: SingleProductProps) => {
     setAddToCartProduct(updatedCart);
   };
   return (
-    <div className="md:flex w-full px-6 lg:container lg:px-0 mt-4">
+    <div className="md:flex w-full px-6 lg:container lg:px-0 pt-8 text-primary-txt">
       <div className="relative w-full mt-5 md:w-1/2 md:mr-5">
         {/* <div className="absolute text-red-400 flex justify-end w-full lg:ml-[-50px] ">
           <FaHeart size={22} />
@@ -71,7 +71,7 @@ const SingleProduct = ({ productId }: SingleProductProps) => {
         <h1 className="text-sm sm:text-lg md:text-xl">{product?.name}</h1>
         {/* StarRating component if available */}
         {/* <StarRating rating={product ? product.rate : 0} /> */}
-        <p className="flex w-10 justify-center items-center text-sm my-2 rounded-md bg-custom-btn font-bold ">
+        <p className="flex w-10 justify-center items-center text-sm my-2 rounded-md bg-primary-btn font-bold ">
           <p className="text-primary-dark font-medium mt-[2px] ml-1">
             {product?.rate}
           </p>
@@ -88,18 +88,18 @@ const SingleProduct = ({ productId }: SingleProductProps) => {
                   <IndianRupee size={20} className="inline   " />
                   {Number(product?.discountedPrice).toLocaleString("us")}
                 </p>
-                <p className="text-base text-custom-gray">(inc. all Taxes)</p>
+                <p className="text-base text-primary-gray">(inc. all Taxes)</p>
               </div>
             </div>
-            <div className="border-l border-custom-gray mx-4 h-12"></div>
-            <div className="text-xl flex items-center text-custom-gray line-through">
+            <div className="border-l border-primary-gray mx-4 h-12"></div>
+            <div className="text-xl flex items-center text-primary-gray line-through">
               <span>MRP. ₹</span>
               {Number(product?.price).toLocaleString("us")}
             </div>
           </div>
           {/* Buttons Section */}
           <div className="flex justify-between items-center my-4">
-            <Button className=" text-primary-dark font-medium bg-custom-btn px-4 py-2 rounded-lg cursor-pointer">
+            <Button className=" text-primary-dark font-medium bg-primary-btn px-4 py-2 rounded-lg cursor-pointer">
               Buy Now
             </Button>
             <Button
@@ -115,8 +115,8 @@ const SingleProduct = ({ productId }: SingleProductProps) => {
           </div>
           <AddToCartModal products={product} />
         </div>
-        {/* <div className="border border-custom-gray my-2"></div> */}
-        <div className="rounded-lg text-xl my-4 border border-custom-gray">
+        {/* <div className="border border-primary-gray my-2"></div> */}
+        <div className="rounded-lg text-xl my-4 border border-primary-gray">
           <p className="text-2xl font-bold ml-4 mt-2">Key Features</p>
           {product?.keyFeatures.map((feature, index) => (
             <li className="text-base md:text-xl p-2 mx-2" key={index}>

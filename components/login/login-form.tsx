@@ -84,7 +84,7 @@ const LoginForm = () => {
             <FormSuccess message={success} />
             <Button
               disabled={isLoading}
-              className="w-full bg-custom-btn hover:bg-custom-btn text-black"
+              className="w-full bg-primary-btn hover:bg-primary-btn text-black"
             >
               Continue
             </Button>

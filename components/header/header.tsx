@@ -22,8 +22,7 @@ const Header = () => {
   };
   return (
     <>
-      {/* px-6 lg:container lg:px-0 */}
-      <div className="flex w-full items-center py-6  lg:container px-6 lg:px-0">
+      <div className="flex w-full items-center py-6  lg:container px-6 lg:px-0 text-primary-txt ">
         <div className="flex w-[80%] md:w-[60%] lg:w-[70%]">
           <h1 className="hidden md:block md:text-5xl md:mr-10 lg:mr-32">ABC</h1>
           <div className="flex items-center mr-4 md:mr-[5%] lg:mr-[10%]">
@@ -55,8 +54,8 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="block md:hidden">
-        <Input placeholder="What are you looking for?" />
+      <div className="block text-primary-white relative md:hidden lg:container lg:px-0 px-6">
+        <Search />
       </div>
     </>
   );

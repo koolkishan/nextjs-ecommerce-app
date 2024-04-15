@@ -26,14 +26,14 @@ const AddToCartModal = ({ products }: AddToCartModalProps) => {
   return (
     <div className="w-full">
       <Dialog open={openModal} onOpenChange={setOpenModal}>
-        <DialogContent className="bg-primary-dark border-none w-[600px]">
+        <DialogContent className="bg-primary-dark border-none lg:w-[100%]">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold">
               1 Item added to the cart!
             </DialogTitle>
-            <DialogDescription className="w-full ">
-              <div className="flex justify-center items-center my-4 pb-4 border-b">
-                <div>
+            <DialogDescription className="w-full">
+              <div className="md:flex md:justify-center md:items-center my-4 pb-4 border-b">
+                <div className="flex justify-center items-center">
                   <Image
                     src="/deals-of-the-day/dealsOfTheDay1.png"
                     alt="singleproduct"
@@ -41,15 +41,15 @@ const AddToCartModal = ({ products }: AddToCartModalProps) => {
                     height={200}
                   />
                 </div>
-                <div className="text-primary-txt text-base mx-4  ">
+                <div className="text-primary-txt text-lg md:text-base mx-4  ">
                   {products?.name}
                 </div>
                 <div className="">
-                  <p className="flex item-center text-lg text-primary-txt font-bold">
+                  <p className="text-center md:flex md:item-center text-lg text-primary-txt font-bold">
                     <IndianRupee className="inline mt-1" size={20} />
                     {Number(products?.discountedPrice).toLocaleString("us")}
                   </p>
-                  <p className="text-sm flex items-center text-custom-gray line-through mx-2">
+                  <p className="text-center text-sm md:flex md:items-center text-primary-gray line-through mx-2">
                     <span className="text-xl">₹</span>
                     {Number(products?.price).toLocaleString("us")}
                   </p>
@@ -57,7 +57,7 @@ const AddToCartModal = ({ products }: AddToCartModalProps) => {
               </div>
             </DialogDescription>
             <Button
-              className="bg-custom-btn hover:bg-custom-btn text-primary-dark"
+              className="bg-primary-btn hover:bg-primary-btn text-primary-dark"
               onClick={handleProceedToCart}
             >
               Proceeed To Cart
