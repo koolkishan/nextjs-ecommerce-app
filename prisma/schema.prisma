@@ -25,6 +25,7 @@ model User {
   emailVerified DateTime?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
+  address       Address?
 }
 
 model VerificationToken {
@@ -34,4 +35,20 @@ model VerificationToken {
   expirationTime DateTime
 
   @@unique([email, token])
+}
+
+model Address {
+  id                             String  @id @default(cuid())
+  userId                         String  @unique // Foreign key relation to User model
+  mobileno                       String
+  addressNickName                String
+  pincode                        String
+  flateNOBuildingNOCompanyStreet String?
+  landMark                       String
+  localitySectorArea             String
+  state                          String
+  city                           String
+  addressType                    String
+
+  User User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

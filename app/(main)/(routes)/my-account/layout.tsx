@@ -3,4 +3,3 @@ const MyAccountLayout = ({ children }: { children: React.ReactNode }) => {
   };
   
   export default MyAccountLayout;
-  

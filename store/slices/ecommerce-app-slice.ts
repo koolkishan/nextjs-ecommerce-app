@@ -1,4 +1,5 @@
 import { ProductTypes } from "@/types";
+import { Address, User } from "@prisma/client";
 import { StateCreator } from "zustand";
 export interface EcommerceAppSliceTypes {
   openModal?: boolean;
@@ -15,6 +16,10 @@ export interface EcommerceAppSliceTypes {
   setAddToCartProduct: (data: ProductTypes[]) => void;
   compareLimitExceeded?: boolean;
   setCompareLimitExceeded: (data: boolean) => void;
+  userDetails?: User | null;
+  setUserDetails: (data: User) => void;
+  userAddress?: Address | null;
+  setUserAddress: (data: Address) => void;
 }
 const createEcommerceAppSlice: StateCreator<EcommerceAppSliceTypes> = (set, get) => ({
   openModal: false,
@@ -44,6 +49,14 @@ const createEcommerceAppSlice: StateCreator<EcommerceAppSliceTypes> = (set, get)
   addToCartProduct:[],
   setAddToCartProduct: (products: ProductTypes[]) => {
     set({ addToCartProduct: products });
+  },
+  userDetails: null,
+  setUserDetails: (user: User) => {
+    set({ userDetails: user });
+  },
+  userAddress: null,
+  setUserAddress: (address: Address) => {
+    set({ userAddress: address });
   },
 });
 

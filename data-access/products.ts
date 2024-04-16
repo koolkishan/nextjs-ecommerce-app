@@ -1,10 +1,10 @@
 export const dealOfTheDay = [
   {
     id: 1,
-    title: 'croma power bank',
+    title: "croma power bank",
     name: "Croma 20000 mAh 22.5W Fast Charging Power Bank (2 Type A, 1 PD Type C & 1 Micro USB Port, Aluminium Casing, Apple Compatible, Black)",
     price: 10000,
-    brand: 'Oppo',
+    brand: "Oppo",
     image: "/deal-of-the-day/dealsOfTheDay1.png",
     subImage: [
       "/deal-of-the-day/dealsOfTheDay1.png",
@@ -30,10 +30,10 @@ export const dealOfTheDay = [
   },
   {
     id: 2,
-    title: 'croma power bank',
+    title: "croma power bank",
     name: "Croma 20000 mAh 22.5W Fast Charging Power Bank (2 Type A, 1 PD Type C & 1 Micro USB Port, Aluminium Casing, Apple Compatible, Black)",
     price: 15000,
-    brand: 'Vivo',
+    brand: "Vivo",
     image: "/deal-of-the-day/dealsOfTheDay1.png",
     subImage: [
       "/deal-of-the-day/dealsOfTheDay1.png",
@@ -59,10 +59,10 @@ export const dealOfTheDay = [
   },
   {
     id: 3,
-    title: 'croma power bank',
+    title: "croma power bank",
     name: "Croma 20000 mAh 22.5W Fast Charging Power Bank (2 Type A, 1 PD Type C & 1 Micro USB Port, Aluminium Casing, Apple Compatible, Black)",
     price: 20000,
-    brand: 'Mi',
+    brand: "Mi",
     image: "/deal-of-the-day/dealsOfTheDay1.png",
     subImage: [
       "/deal-of-the-day/dealsOfTheDay1.png",
@@ -89,10 +89,10 @@ export const dealOfTheDay = [
   },
   {
     id: 4,
-    title: 'croma power bank',
+    title: "croma power bank",
     name: "Croma 20000 mAh 22.5W Fast Charging Power Bank (2 Type A, 1 PD Type C & 1 Micro USB Port, Aluminium Casing, Apple Compatible, Black)",
     price: 25000,
-    brand: 'Mi',
+    brand: "Mi",
     image: "/deal-of-the-day/dealsOfTheDay1.png",
     subImage: [
       "/deal-of-the-day/dealsOfTheDay1.png",
@@ -118,10 +118,10 @@ export const dealOfTheDay = [
   },
   {
     id: 6,
-    title: 'croma power bank',
+    title: "croma power bank",
     name: "Croma 20000 mAh 22.5W Fast Charging Power Bank (2 Type A, 1 PD Type C & 1 Micro USB Port, Aluminium Casing, Apple Compatible, Black)",
     price: 30000,
-    brand: 'Croma',
+    brand: "Croma",
     image: "/deal-of-the-day/dealsOfTheDay1.png",
     subImage: [
       "/deal-of-the-day/dealsOfTheDay1.png",
@@ -147,10 +147,10 @@ export const dealOfTheDay = [
   },
   {
     id: 7,
-    title: 'croma power bank',
+    title: "croma power bank",
     name: "Croma 20000 mAh 22.5W Fast Charging Power Bank (2 Type A, 1 PD Type C & 1 Micro USB Port, Aluminium Casing, Apple Compatible, Black)",
     price: 35000,
-    brand: 'Samsung',
+    brand: "Samsung",
     image: "/deal-of-the-day/dealsOfTheDay1.png",
     subImage: [
       "/deal-of-the-day/dealsOfTheDay1.png",
@@ -176,10 +176,10 @@ export const dealOfTheDay = [
   },
   {
     id: 8,
-    title: 'powerlight',
+    title: "powerlight",
     name: "power light",
     price: 40000,
-    brand: 'Croma',
+    brand: "Croma",
     image: "/deal-of-the-day/dealsOfTheDay1.png",
     subImage: [
       "/deal-of-the-day/dealsOfTheDay1.png",

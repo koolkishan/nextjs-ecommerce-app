@@ -10,7 +10,7 @@ const LoginModal = () => {
   const { setOpenModal, openModal } = useAppStore();
 
   return (
-    <Dialog open={openModal} onOpenChange={setOpenModal}>
+    <Dialog open onOpenChange={setOpenModal}>
       <DialogContent className="bg-primary-dark border-none">
         <Tabs defaultValue="login" className="w-[400px] mt-5 ml-8">
           <DialogHeader>
