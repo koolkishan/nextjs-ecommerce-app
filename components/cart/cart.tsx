@@ -14,11 +14,11 @@ const Cart = () => {
   const isCartEmpty = !addToCartProduct || addToCartProduct.length === 0;
 
   // Determine the layout for order summary based on screen size
-  const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 0;
+  const screenWidth = typeof window !== "undefined" ? window.innerWidth : 0;
   const isLargeScreen = screenWidth >= 768; // Adjust the value if needed
 
   return (
-    <div className="w-full h-full lg:container px-6 lg:px-0">
+    <div className="w-full lg:container px-6 lg:px-0">
       {/* Heading */}
       {!isCartEmpty && (
         <div className="py-6 w-full">
@@ -89,9 +89,7 @@ const Cart = () => {
                     </div>
 
                     {/* Remove button */}
-                    <Button
-                      className="bg-transparent hover:bg-transparent border border-black px-10 text-primary-dark font-bold"
-                    >
+                    <Button className="bg-transparent hover:bg-transparent border border-black px-10 text-primary-dark font-bold">
                       Remove
                     </Button>
                   </div>
@@ -124,7 +122,11 @@ const Cart = () => {
 
           {/* Order details */}
           {/* Conditionally render order summary either to the right side of the cart products (large screens) or at the bottom (small screens) */}
-          <div className={isLargeScreen ? "md:col-span-1" : "w-full col-span-2 p-2 bg-white"}>
+          <div
+            className={
+              isLargeScreen ? "md:col-span-1" : "w-full col-span-2 p-2 bg-white"
+            }
+          >
             <div className="text-xl font-bold">
               <p>Order Summary ({addToCartProduct.length} items)</p>
             </div>
@@ -161,7 +163,10 @@ const Cart = () => {
                 <p className="my-3">
                   <IndianRupee className="inline" />
                   {addToCartProduct
-                    .reduce((total, product) => total + product.discountedPrice, 0)
+                    .reduce(
+                      (total, product) => total + product.discountedPrice,
+                      0
+                    )
                     .toLocaleString("en-IN")}
                 </p>
               </div>
