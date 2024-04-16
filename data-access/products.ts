@@ -14,9 +14,9 @@ export const dealOfTheDay = [
       "/deal-of-the-day/dealsOfTheDay1.png",
     ],
     discountedPrice: 1799,
-    rate: 4,
-    totalRating: 30,
-    totalReview: 26,
+    rate: 4, // from db
+    totalRating: 30, // from db
+    totalReview: 26, // from db
     keyFeatures: [
       "Battery: 20000 mAh, Lithium Polymer",
       "Fast Charging: Yes, 22.5 W",
@@ -209,3 +209,4 @@ export const getProductFromId = (productId: string) => {
   const product = dealOfTheDay.find((p) => p.id === +productId);
   return product;
 };
+// Battery: 20000 mAh, Lithium Polymer,Fast Charging: Yes, 22.5 W,Power Input Port: PD Type C & Micro USB,Power Output Port: 2 Type A & 1 Type C PD,Cable Included: Yes, USB Type C,Durable Aluminium Housing, Short-Circuit Protection,18 Months Warranty

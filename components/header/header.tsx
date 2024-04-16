@@ -11,15 +11,33 @@ import { useAppStore } from "@/store";
 import { useEffect } from "react";
 import cities from "cities.json";
 import Search from "./search";
+import { oneEntryTry } from "@/actions/one-entry-api-calls/one-entry";
 
 const Header = () => {
   const router = useRouter();
   //   const { setOpenModal } = useAppStore();
 
-  const handleClick = () => {
+  const handleClick = async() => {
     // router.push('/my-account')
     // setOpenModal(true);
+    await oneEntryTry();
   };
+  useEffect(() => {
+    // Define an async function inside the useEffect callback
+    const fetchData = async () => {
+      try {
+        // Call the async function and handle the result
+        await oneEntryTry();
+      } catch (error) {
+        // Handle error if necessary
+        console.error("Error calling oneEntryTry:", error);
+      }
+    };
+
+    // Call the async function
+    fetchData();
+  }, []); 
+
   return (
     <>
       <div className="flex w-full items-center py-6  lg:container px-6 lg:px-0 text-primary-txt ">
@@ -29,7 +47,7 @@ const Header = () => {
             <HeaderSheet />
             <p className="hidden text-base font-bold md:block">Menu</p>
           </div>
-          <div className="block mt-1 text-3xl md:hidden text-center">
+          <div className="block mt-1 text-3xl md:hidden text-center cursor-pointer" onClick={handleClick}>
             <p>ABC</p>
           </div>
           <div className="hidden md:block w-1/2">
