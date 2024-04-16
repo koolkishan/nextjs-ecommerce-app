@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { Drawer, DrawerClose, DrawerContent } from "@/components/ui/drawer";
 import { Button } from "../ui/button";
 import { Dispatch, SetStateAction } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { X, Plus } from "lucide-react";
 import CompareModal from "./compare-product-modal";
 interface CompareDrawerProps {

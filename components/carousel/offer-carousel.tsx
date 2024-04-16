@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Autoplay from "embla-carousel-autoplay";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import {
   Carousel,
   CarouselContent,
@@ -34,9 +34,9 @@ const OfferCarousel = () => {
                 <div className="relative h-[216px] w-full md:h-[427px]">
                   <Image
                     src={data.image}
-                    fill
+                    layout="fill"
                     alt="everything"
-                    objectFit=""
+                    // objectFit=""
                     className="cursor-pointer transition-all duration-500 "
                   />
                 </div>

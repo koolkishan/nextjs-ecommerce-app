@@ -1,7 +1,7 @@
 "use client";
 import { useAppStore } from "@/store";
 import { MultipleProductCarousel } from ".";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { X } from "lucide-react";
 import { StarRating } from "../rating-stars";
 import { ProductTypes } from "@/types";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useAppStore } from "@/store";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { StarRating } from "../rating-stars";
 import { IndianRupee } from "lucide-react";
 import { Button } from "../ui/button";

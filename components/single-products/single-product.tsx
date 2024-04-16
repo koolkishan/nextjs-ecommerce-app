@@ -4,7 +4,7 @@ import { StarRating } from "@/components/rating-stars";
 import { getProductFromId } from "@/data-access/products";
 import { ProductTypes } from "@/types";
 import { IndianRupee } from "lucide-react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";

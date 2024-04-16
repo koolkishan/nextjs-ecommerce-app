@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import {
   Carousel,
   CarouselContent,
@@ -53,7 +53,7 @@ const MultipleProductCarousel = ({
                           loader={imageLoader}
                           className="h-full w-full"
                           height={200}
-                          width={80}
+                          width={200}
                           alt={product.name}
                           src="/deals-of-the-day/dealsOfTheDay1.png"
                           loading="lazy"

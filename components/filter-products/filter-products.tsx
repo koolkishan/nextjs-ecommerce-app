@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useAppStore } from "@/store";
 import { ProductTypes } from "@/types";
 import { IndianRupee } from "lucide-react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { FaStar } from "react-icons/fa";
 import { useParams, useRouter } from "next/navigation";
 import { Button } from "../ui/button";

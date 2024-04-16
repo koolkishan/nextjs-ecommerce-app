@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { ProductTypes } from "@/types";
 import { DialogTitle, DialogTrigger } from "@radix-ui/react-dialog";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { useRouter } from "next/navigation";
 import { IndianRupee } from "lucide-react";
 import { Button } from "../ui/button";
@@ -24,11 +24,11 @@ const AddToCartModal = ({ products }: AddToCartModalProps) => {
     router.push("/cart");
   };
   return (
-    <div className="w-full">
+    <div className="w-full text-primary-txt">
       <Dialog open={openModal} onOpenChange={setOpenModal}>
         <DialogContent className="bg-primary-dark border-none lg:w-[100%]">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold">
+            <DialogTitle className="text-2xl font-bold text-white">
               1 Item added to the cart!
             </DialogTitle>
             <DialogDescription className="w-full">
@@ -38,7 +38,7 @@ const AddToCartModal = ({ products }: AddToCartModalProps) => {
                     src="/deals-of-the-day/dealsOfTheDay1.png"
                     alt="singleproduct"
                     width={300}
-                    height={200}
+                    height={300}
                   />
                 </div>
                 <div className="text-primary-txt text-lg md:text-base mx-4  ">
