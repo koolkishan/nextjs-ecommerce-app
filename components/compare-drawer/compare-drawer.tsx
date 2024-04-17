@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { Drawer, DrawerClose, DrawerContent } from "@/components/ui/drawer";
 import { Button } from "../ui/button";
 import { Dispatch, SetStateAction } from "react";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { X, Plus } from "lucide-react";
 import CompareModal from "./compare-product-modal";
 interface CompareDrawerProps {
@@ -54,9 +54,12 @@ const CompareDrawer = ({
                           src="/deals-of-the-day/dealsOfTheDay1.png"
                           alt="Product Image"
                           width={100}
-                          height={100}
                           // onClick={() => router.push(`/product/${product.id}`)}
-                        />
+                          height={100}
+                          style={{
+                            maxWidth: "100%",
+                            height: "auto"
+                          }} />
                       </div>
                       <div className="text-wrap mx-4 text-sm font-medium">
                         <p className="">

@@ -1,14 +1,14 @@
 "use client";
 import { useAppStore } from "@/store";
 import { MultipleProductCarousel } from ".";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { X } from "lucide-react";
 import { StarRating } from "../rating-stars";
 import { ProductTypes } from "@/types";
 
 const CompareProductCarousel = () => {
   const { compareProduct, setCompareProduct } = useAppStore();
-  console.log("🚀 ~ CompareProductCarousel ~ compareProduct:", compareProduct);
+  // console.log("🚀 ~ CompareProductCarousel ~ compareProduct:", compareProduct);
   const handleRemove = (product: ProductTypes) => {
     const newProduct = compareProduct.filter((p) => p.id !== product.id);
     setCompareProduct(newProduct);
@@ -32,7 +32,10 @@ const CompareProductCarousel = () => {
                       alt="singleproduct"
                       width={300}
                       height={300}
-                    />
+                      style={{
+                        maxWidth: "100%",
+                        height: "auto"
+                      }} />
                   </div>
                   <div className="mx-4 my-8">
                     <p className="text-xl font-medium  line-clamp-3">

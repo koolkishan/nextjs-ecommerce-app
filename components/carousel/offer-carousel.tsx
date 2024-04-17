@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Autoplay from "embla-carousel-autoplay";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import {
   Carousel,
   CarouselContent,
@@ -16,39 +16,37 @@ const OfferCarousel = () => {
     Autoplay({ delay: 1500, stopOnInteraction: true })
   );
 
-  return (
-    <>
-      <div className="">
-        <Carousel
-          plugins={[plugin.current]}
-          onMouseEnter={plugin.current.stop}
-          onMouseLeave={plugin.current.reset}
-          className="w-full"
-          opts={{
-            slidesToScroll: "auto",
-          }}
-        >
-          <CarouselContent>
-            {offerImage.map((data, index) => (
-              <CarouselItem key={index}>
-                <div className="relative h-[216px] w-full md:h-[427px]">
-                  <Image
-                    src={data.image}
-                    layout="fill"
-                    alt="everything"
-                    // objectFit=""
-                    className="cursor-pointer transition-all duration-500 "
-                  />
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="translate-x-[60px] bg-gray-500/15" />
-          <CarouselNext className="-translate-x-16 bg-gray-500/15" />
-        </Carousel>
-      </div>
-    </>
-  );
+  return <>
+    <div className="">
+      <Carousel
+        plugins={[plugin.current]}
+        onMouseEnter={plugin.current.stop}
+        onMouseLeave={plugin.current.reset}
+        className="w-full"
+        opts={{
+          slidesToScroll: "auto",
+        }}
+      >
+        <CarouselContent>
+          {offerImage.map((data, index) => (
+            <CarouselItem key={index}>
+              <div className="relative h-[216px] w-full md:h-[427px]">
+                <Image
+                  src={data.image}
+                  alt="everything"
+                  // objectFit=""
+                  className="cursor-pointer transition-all duration-500 "
+                  fill
+                  sizes="100vw" />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="translate-x-[60px] bg-gray-500/15" />
+        <CarouselNext className="-translate-x-16 bg-gray-500/15" />
+      </Carousel>
+    </div>
+  </>;
 };
 
 export default OfferCarousel;

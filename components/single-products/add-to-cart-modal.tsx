@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { ProductTypes } from "@/types";
 import { DialogTitle, DialogTrigger } from "@radix-ui/react-dialog";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { IndianRupee } from "lucide-react";
 import { Button } from "../ui/button";
@@ -39,7 +39,10 @@ const AddToCartModal = ({ products }: AddToCartModalProps) => {
                     alt="singleproduct"
                     width={300}
                     height={300}
-                  />
+                    style={{
+                      maxWidth: "100%",
+                      height: "auto"
+                    }} />
                 </div>
                 <div className="text-primary-txt text-lg md:text-base mx-4  ">
                   {products?.name}

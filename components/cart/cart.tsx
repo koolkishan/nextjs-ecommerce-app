@@ -1,7 +1,7 @@
 "use client";
 
 import { useAppStore } from "@/store";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { StarRating } from "../rating-stars";
 import { IndianRupee } from "lucide-react";
 import { Button } from "../ui/button";
@@ -34,7 +34,10 @@ const Cart = () => {
             alt="Cart Empty"
             width={400}
             height={400}
-          />
+            style={{
+              maxWidth: "100%",
+              height: "auto"
+            }} />
           <p className="text-xl font-bold">Cart is empty</p>
         </div>
       ) : (
@@ -53,7 +56,10 @@ const Cart = () => {
                       alt={product.name}
                       width={300}
                       height={350}
-                    />
+                      style={{
+                        maxWidth: "100%",
+                        height: "auto"
+                      }} />
                   </div>
 
                   {/* Product details */}

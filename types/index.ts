@@ -9,6 +9,7 @@ export interface DealOfTheDayTypes {
     totalReview: number;
     keyFeatures?: (string)[] | null;
     category: string;
+    dealoftheday:  number;
   }
 
   export interface ProductTypes {
@@ -24,6 +25,8 @@ export interface DealOfTheDayTypes {
     totalReview: number;
     keyFeatures?: (string)[] | null;
     category: string;
+    dealoftheday:  number;
+
   }
   
   

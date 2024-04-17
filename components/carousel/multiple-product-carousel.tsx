@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import {
   Carousel,
   CarouselContent,
@@ -14,30 +15,44 @@ import { FaHeart } from "react-icons/fa";
 import { StarRating } from "../rating-stars";
 import { useParams, useRouter } from "next/navigation";
 import { useAppStore } from "@/store";
+import { getDealOfTheDayProducts } from "@/lib/utils";
+import { useEffect, useState } from "react";
 interface MultipleProductCarouselPropes {
   products?: DealOfTheDayTypes[];
 }
+
 const MultipleProductCarousel = ({
   products,
 }: MultipleProductCarouselPropes) => {
   const router = useRouter();
   const { compareProduct, setCompareProduct } = useAppStore();
+ const [dealOfTheDayProducts, setDealOfTheDayProducts] = useState<DealOfTheDayTypes[]>([]);
   const handleClick = (productId: number) => {
     router.push(`/product/${productId}}`);
   };
+
   const handleRemove = (id: number, index: number) => {
     const newCompareProduct = compareProduct
       .slice(0, index)
       .concat(compareProduct.slice(index + 1));
     setCompareProduct(newCompareProduct);
   };
+
+  useEffect(()=>{
+    if(products) {
+      const dealOfTheDayProducts = getDealOfTheDayProducts({products});
+      // console.log("🚀 ~ useEffect ~ dealOfTheDayProducts:", dealOfTheDayProducts);
+      setDealOfTheDayProducts(dealOfTheDayProducts);
+    }
+  },[])
+
   return (
     <div className="w-full py-4 px-6 lg:container lg:px-0">
       <div className="">
         <Carousel>
           <CarouselContent className="ml-2">
-            {products &&
-              products.map((product, index) => (
+            {dealOfTheDayProducts &&
+              dealOfTheDayProducts.map((product, index) => (
                 <CarouselItem
                   key={index}
                   className="basis-1/2 sm:basis-1/2 md:basis-1/2 lg:basis-1/4  mx-3 "
@@ -55,8 +70,13 @@ const MultipleProductCarousel = ({
                           height={200}
                           width={200}
                           alt={product.name}
-                          src="/deals-of-the-day/dealsOfTheDay1.png"
+                          // src="/deals-of-the-day/dealsOfTheDay1.png"
+                          src={product.image}
                           loading="lazy"
+                          style={{
+                            maxWidth: "100%",
+                            height: "auto",
+                          }}
                         />
                       </div>
                       <div className="w-full text-sm sm:text-base  lg:text-xl">

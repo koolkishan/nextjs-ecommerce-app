@@ -6,7 +6,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { categoryImages } from "@/data-access/category-images";
 
 const CategoryCarousel = () => {
@@ -29,10 +29,12 @@ const CategoryCarousel = () => {
                   <Image
                     src={image}
                     alt="logo-maker"
-                    layout="fill"
-                    objectFit="contain"
                     className="rounded-full"
-                  />
+                    fill
+                    sizes="100vw"
+                    style={{
+                      objectFit: "contain"
+                    }} />
                 </div>
               </div>
             </CarouselItem>

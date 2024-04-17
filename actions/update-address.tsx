@@ -28,8 +28,8 @@ export const updateUserAddress = async (
     }
 
     const userAddress = await findAddressByUserId(userId);
-    console.log("🚀 ~ userAddress:", userAddress);
-    console.log("🚀 ~ userId:", userId);
+    // console.log("🚀 ~ userAddress:", userAddress);
+    // console.log("🚀 ~ userId:", userId);
     if (!userAddress) {
       await addAddress(validatedData, userId);
       return { success: "Address Added Successfully!" };

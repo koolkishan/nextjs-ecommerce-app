@@ -4,10 +4,12 @@ import { StateCreator } from "zustand";
 export interface EcommerceAppSliceTypes {
   openModal?: boolean;
   setOpenModal: (data: boolean) => void;
-  productCarouselImage?: string;
-  setProductCarouselImage: (data: string) => void;
+  productCarouselImage?: string | null;
+  setProductCarouselImage: (data: string | null) => void;
   searchTerm? :string;
   setSearchTerm: (data: string) => void;
+  products: ProductTypes[];
+  setProducts:(data:ProductTypes[]) => void;
   filterProduct: ProductTypes[];
   setFilterProduct: (data: ProductTypes[]) => void;
   compareProduct: ProductTypes[];
@@ -26,13 +28,17 @@ const createEcommerceAppSlice: StateCreator<EcommerceAppSliceTypes> = (set, get)
   setOpenModal: (open: boolean) => {
     set({ openModal: open });
   },
-  productCarouselImage: 'null',
-  setProductCarouselImage: (image: string ) => {
+  productCarouselImage: null,
+  setProductCarouselImage: (image: string | null) => {
     set({ productCarouselImage: image });
   },
   searchTerm:'',
   setSearchTerm: (term: string) => {
     set({ searchTerm: term });
+  },
+  products:[],
+  setProducts: (products: ProductTypes[]) => {
+    set({ products: products });
   },
   filterProduct:[],
   setFilterProduct: (products: ProductTypes[]) => {

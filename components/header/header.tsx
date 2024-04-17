@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import { Input } from "@/components/ui/input";
 import { HeaderSheet } from "@/components/header/header-sheet";
@@ -11,32 +12,34 @@ import { useAppStore } from "@/store";
 import { useEffect } from "react";
 import cities from "cities.json";
 import Search from "./search";
-import { oneEntryTry } from "@/actions/one-entry-api-calls/one-entry";
+import { getProducts } from "@/actions/one-entry-api-calls/one-entry";
+import { ProductTypes } from "@/types";
 
 const Header = () => {
   const router = useRouter();
-  //   const { setOpenModal } = useAppStore();
+  const { products, setProducts } = useAppStore();
+  console.log("🚀 ~ Header ~ products:", products);
 
-  const handleClick = async() => {
-    // router.push('/my-account')
-    // setOpenModal(true);
-    await oneEntryTry();
-  };
+  // const handleClick = async() => {
+  //   // router.push('/my-account')
+  //   // setOpenModal(true);
+  //   await oneEntryTry();
+  // };
+
   useEffect(() => {
-    // Define an async function inside the useEffect callback
     const fetchData = async () => {
       try {
-        // Call the async function and handle the result
-        await oneEntryTry();
+        const products = await getProducts();
+        // console.log("🚀 ~ fetchData ~ products:", products);
+        if (products) {
+          setProducts(products);
+        }
       } catch (error) {
-        // Handle error if necessary
         console.error("Error calling oneEntryTry:", error);
       }
     };
-
-    // Call the async function
     fetchData();
-  }, []); 
+  }, []);
 
   return (
     <>
@@ -47,7 +50,10 @@ const Header = () => {
             <HeaderSheet />
             <p className="hidden text-base font-bold md:block">Menu</p>
           </div>
-          <div className="block mt-1 text-3xl md:hidden text-center cursor-pointer" onClick={handleClick}>
+          <div
+            className="block mt-1 text-3xl md:hidden text-center cursor-pointer"
+            onClick={() => {}}
+          >
             <p>ABC</p>
           </div>
           <div className="hidden md:block w-1/2">
@@ -63,7 +69,7 @@ const Header = () => {
                 <FaUser
                   size={18}
                   className="mr-4 cursor-pointer"
-                  onClick={handleClick}
+                  // onClick={handleClick}
                 />
               }
               hoverContent={<Profile />}

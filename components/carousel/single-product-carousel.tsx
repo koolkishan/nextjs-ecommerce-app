@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import * as React from "react";
 
@@ -9,7 +10,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { imageLoader } from "@/lib/image-loader";
 import { useAppStore } from "@/store";
 
@@ -26,6 +27,9 @@ export function SingleProductCarousel({
     // console.log(image);
     setProductCarouselImage(image);
   };
+  React.useEffect(() => {
+    setProductCarouselImage(null);
+  }, []);
   return (
     <Carousel
       opts={{
@@ -45,15 +49,19 @@ export function SingleProductCarousel({
               <div className="p-1">
                 <Image
                   onClick={() => {
-                    handleClick("/deals-of-the-day/dealsOfTheDay1.png");
+                    handleClick(image);
                   }}
                   loader={imageLoader}
                   className="h-full w-full"
                   height={10}
                   width={10}
                   alt="sub-image"
-                  src="/deals-of-the-day/dealsOfTheDay1.png"
+                  src={image}
                   loading="lazy"
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto",
+                  }}
                 />
               </div>
             </CarouselItem>

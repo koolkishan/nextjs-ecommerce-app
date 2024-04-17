@@ -1,4 +1,4 @@
-import { getProductFromId } from "@/data-access/products";
+// import { getProductFromId } from "@/data-access/products";
 import { redirect } from "next/navigation";
 import { ProductReview, SimilarProducts, SingleProduct } from "../../../../../components/single-products";
 

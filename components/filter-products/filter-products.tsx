@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useAppStore } from "@/store";
 import { ProductTypes } from "@/types";
 import { IndianRupee } from "lucide-react";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 import { useParams, useRouter } from "next/navigation";
 import { Button } from "../ui/button";
@@ -99,7 +99,10 @@ const FilterProducts = ({ products, setIsOpenDrawer }: FilterProductsProps) => {
                   width={270}
                   height={270}
                   onClick={() => router.push(`/product/${product.id}`)}
-                />
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto"
+                  }} />
               </div>
               <div>
                 <p className="mt-10 mb-5 font-bold text-lg  line-clamp-2">{product.name}</p>
