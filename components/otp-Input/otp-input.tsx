@@ -87,7 +87,7 @@ const OtpInput = ({ email }: OtpInputProps) => {
         }
       }
     } catch (error) {
-      console.log("🚀 ~ resendOtpthroughMail ~ error:", error);
+      console.log("resendOtpthroughMail ~ error:", error);
       console.log("error while sending otp");
     }
   }

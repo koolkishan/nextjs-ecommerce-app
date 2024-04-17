@@ -18,19 +18,11 @@ import { ProductTypes } from "@/types";
 const Header = () => {
   const router = useRouter();
   const { products, setProducts } = useAppStore();
-  console.log("🚀 ~ Header ~ products:", products);
-
-  // const handleClick = async() => {
-  //   // router.push('/my-account')
-  //   // setOpenModal(true);
-  //   await oneEntryTry();
-  // };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const products = await getProducts();
-        // console.log("🚀 ~ fetchData ~ products:", products);
         if (products) {
           setProducts(products);
         }

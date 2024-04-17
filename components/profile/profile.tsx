@@ -18,14 +18,12 @@ const Profile = () => {
   const { setOpenModal, setUserDetails, setUserAddress } = useAppStore();
   const router = useRouter();
   const user = useAuthUser();
-  console.log("🚀 ~ Profile ~ user:", user);
 
   // useEffect(() => {
   //   const fetchUserDetails = async () => {
   //     if (user && user.email && user.id) {
   //       try {
   //         const userDetails = await findUserByEmail(user.email);
-  //         console.log("🚀 ~ fetchUserDetails ~ userDetails:", userDetails)
   //         if (userDetails) setUserDetails(userDetails);
 
   //         const userAddressDetails = await findAddressByUserId(user.id);

@@ -14,23 +14,28 @@ import { Button } from "../ui/button";
 import { AddToCartModal, ProductReview, SimilarProducts } from ".";
 import { getProductFromId } from "@/actions/one-entry-api-calls/one-entry";
 import { Spinner } from "@/components/spinner";
+import { addCartProductInDb, getAllProductFromCart } from "@/actions/cart";
+import { useAuthUser } from "@/hooks/useAuthUser";
+import { useRouter } from "next/navigation";
 
 interface SingleProductProps {
   productId: string;
 }
 const SingleProduct = ({ productId }: SingleProductProps) => {
+  const router = useRouter();
   const [isMounted, setIsMounted] = useState<boolean>(false);
   const [fetchedProduct, setFetchedProduct] = useState<any>(null);
+  const user = useAuthUser();
   const {
     productCarouselImage,
     setOpenModal,
     setAddToCartProduct,
     addToCartProduct,
   } = useAppStore();
-  // console.log("🚀 ~ SingleProduct ~ addToCartProduct:", addToCartProduct);
-  // console.log(productCarouselImage);
+
   useEffect(() => {
     setIsMounted(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -42,10 +47,7 @@ const SingleProduct = ({ productId }: SingleProductProps) => {
           setFetchedProduct(fetchedProduct[0]);
         }
       } catch (err) {
-        // setError(err);
       } finally {
-        // Set loading to false once the fetch operation is complete
-        // setLoading(false);
       }
     };
     fetchProduct();
@@ -54,12 +56,16 @@ const SingleProduct = ({ productId }: SingleProductProps) => {
   if (!isMounted) {
     return null;
   }
-  // const product = await getProductFromId(+productId.split("%")[0]);
 
-  const handleAddToCart = (product: ProductTypes) => {
+  const handleAddToCart = async (product: ProductTypes) => {
     setOpenModal(true);
-    const updatedCart = [...addToCartProduct, product];
-    setAddToCartProduct(updatedCart);
+    if (user && user.id) {
+      await addCartProductInDb({ productId: product.id, userId: user?.id });
+      const updatedCart = [...addToCartProduct, product];
+      setAddToCartProduct(updatedCart);
+    } else {
+      router.push("/login");
+    }
   };
   return fetchedProduct ? (
     <div className="">
@@ -146,7 +152,7 @@ const SingleProduct = ({ productId }: SingleProductProps) => {
                 Add to Cart
               </Button>
             </div>
-            <AddToCartModal products={fetchedProduct} />
+            <AddToCartModal product={fetchedProduct} />
           </div>
           {/* <div className="border border-primary-gray my-2"></div> */}
           <div className="rounded-lg text-xl my-4 border border-primary-gray">

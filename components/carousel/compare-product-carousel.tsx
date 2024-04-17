@@ -8,14 +8,11 @@ import { ProductTypes } from "@/types";
 
 const CompareProductCarousel = () => {
   const { compareProduct, setCompareProduct } = useAppStore();
-  // console.log("🚀 ~ CompareProductCarousel ~ compareProduct:", compareProduct);
   const handleRemove = (product: ProductTypes) => {
     const newProduct = compareProduct.filter((p) => p.id !== product.id);
     setCompareProduct(newProduct);
   };
   return (
-    // <MultipleProductCarousel products={compareProduct} isCompareProduct={true}/>
-    // <div>comapare</div>
     <div className="px-6 text-primary-white lg:container lg:px-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-3 mt-8">
       {compareProduct &&
         compareProduct.map((product, index) => {

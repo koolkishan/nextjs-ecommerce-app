@@ -14,7 +14,6 @@ const MyAccount = () => {
   const { setOpenModal, setUserDetails, setUserAddress } = useAppStore();
 
   const user = useAuthUser();
-  // console.log("🚀 ~ MyAccount ~ user:", user)
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -27,7 +26,6 @@ const MyAccount = () => {
     if (user && user.email && user.id) {
       try {
         const userDetails = await findUserByEmail(user.email);
-        console.log("🚀 ~ fetchUserDetails ~ userDetails:", userDetails);
         if (userDetails) setUserDetails(userDetails);
         const userAddressDetails = await findAddressByUserId(user.id);
         if (userAddressDetails) setUserAddress(userAddressDetails);

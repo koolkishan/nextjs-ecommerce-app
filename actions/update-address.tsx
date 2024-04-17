@@ -13,7 +13,6 @@ export const updateUserAddress = async (
   userId: string
 ) => {
   const validation = updateAddressSchema.safeParse(values) as any;
-  console.log("🚀 ~ validation:----", validation);
 
   if (!validation.success) {
     return { error: "Invalid Fields!" };
@@ -28,8 +27,6 @@ export const updateUserAddress = async (
     }
 
     const userAddress = await findAddressByUserId(userId);
-    // console.log("🚀 ~ userAddress:", userAddress);
-    // console.log("🚀 ~ userId:", userId);
     if (!userAddress) {
       await addAddress(validatedData, userId);
       return { success: "Address Added Successfully!" };

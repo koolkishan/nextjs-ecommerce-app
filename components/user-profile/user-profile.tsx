@@ -48,7 +48,6 @@ const UserProfile = () => {
     },
   });
   const onSubmit = async (values: z.infer<typeof updateProfileSchema>) => {
-    // console.log(values);
     setError("");
     setSuccess("");
     startTransition(async () => {

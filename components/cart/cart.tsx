@@ -7,15 +7,14 @@ import { IndianRupee } from "lucide-react";
 import { Button } from "../ui/button";
 
 const Cart = () => {
-  // Access the cart products from your store
   const { addToCartProduct } = useAppStore();
+  const handleRemove = (id:number) => {
+    
+  }
 
-  // Check if cart is empty
   const isCartEmpty = !addToCartProduct || addToCartProduct.length === 0;
-
-  // Determine the layout for order summary based on screen size
   const screenWidth = typeof window !== "undefined" ? window.innerWidth : 0;
-  const isLargeScreen = screenWidth >= 768; // Adjust the value if needed
+  const isLargeScreen = screenWidth >= 768;
 
   return (
     <div className="w-full lg:container px-6 lg:px-0">
@@ -95,7 +94,7 @@ const Cart = () => {
                     </div>
 
                     {/* Remove button */}
-                    <Button className="bg-transparent hover:bg-transparent border border-black px-10 text-primary-dark font-bold">
+                    <Button onClick={()=>{handleRemove(product.id)}} className="bg-transparent hover:bg-transparent border border-black px-10 text-primary-dark font-bold">
                       Remove
                     </Button>
                   </div>

@@ -26,6 +26,7 @@ model User {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   address       Address?
+  Cart          Cart[]
 }
 
 model VerificationToken {
@@ -39,7 +40,7 @@ model VerificationToken {
 
 model Address {
   id                             String  @id @default(cuid())
-  userId                         String  @unique // Foreign key relation to User model
+  userId                         String  @unique 
   mobileno                       String
   addressNickName                String
   pincode                        String
@@ -51,4 +52,12 @@ model Address {
   addressType                    String
 
   User User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Cart {
+  id        String   @id @default(cuid())
+  productId Int[]
+  userId    String   @unique
+  createdAt DateTime @default(now())
+  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

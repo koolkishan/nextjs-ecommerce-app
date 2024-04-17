@@ -13,8 +13,6 @@ export const {
   } = NextAuth({
     callbacks: {
       async session({ token, user, session }) {
-          // console.log("🚀 ~ session ~ user:", user)
-          // console.log(session, 'session');
         if (token.sub && session.user) {
           session.user.id = token.sub;
         }

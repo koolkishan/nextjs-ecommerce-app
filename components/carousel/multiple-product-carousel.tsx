@@ -41,7 +41,6 @@ const MultipleProductCarousel = ({
   useEffect(()=>{
     if(products) {
       const dealOfTheDayProducts = getDealOfTheDayProducts({products});
-      // console.log("🚀 ~ useEffect ~ dealOfTheDayProducts:", dealOfTheDayProducts);
       setDealOfTheDayProducts(dealOfTheDayProducts);
     }
   },[])

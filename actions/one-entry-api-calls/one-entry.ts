@@ -33,7 +33,9 @@ export const getProducts = async () => {
 };
 
 export const getProductFromId = async (productId: number) => {
+  console.log("🚀 ~ getProductFromId ~ productId:", productId);
   const data = [await Products.getProductById(+productId)];
-  const product = mappedProducts(data); 
+  console.log("🚀 ~ getProductFromId ~ data:", data);
+  const product = mappedProducts(data);
   return product;
 };

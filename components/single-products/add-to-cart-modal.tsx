@@ -13,23 +13,54 @@ import { useRouter } from "next/navigation";
 import { IndianRupee } from "lucide-react";
 import { Button } from "../ui/button";
 import { useAuthUser } from "@/hooks/useAuthUser";
-
+import { getAllProductFromCart } from "@/actions/cart";
+import { getProductFromId } from "@/actions/one-entry-api-calls/one-entry";
 interface AddToCartModalProps {
-  products?: ProductTypes;
+  product?: ProductTypes;
 }
-const AddToCartModal = ({ products }: AddToCartModalProps) => {
-
-  const { openModal, setOpenModal } = useAppStore();
+const AddToCartModal = ({ product }: AddToCartModalProps) => {
+  const {
+    openModal,
+    setOpenModal,
+    products,
+    setAddToCartProduct,
+    addToCartProduct,
+  } = useAppStore();
   const router = useRouter();
   const user = useAuthUser();
-  const handleProceedToCart = () => {
-    if(user) {
+  const handleProceedToCart = async () => {
+    if (user?.id) {
+      const cartProducts = await getAllProductFromCart({
+        userId: user?.id,
+      });
+      if (cartProducts) {
+        const cartFilterProducts = [];
+        for (let cart of cartProducts) {
+          const product = products.find((p) => +p.id === +cart.productId);
+          cartFilterProducts.push(product);
+        }
+        console.log(cartFilterProducts, ":???");
+        if (cartFilterProducts) {
+          const combinedCart = [...addToCartProduct, ...cartFilterProducts];
+          const uniqueProducts = new Set();
+          const uniqueUpdatedCart = combinedCart.filter((product) => {
+            if (!uniqueProducts.has(product?.id)) {
+              uniqueProducts.add(product?.id);
+              return true;
+            }
+            return false;
+          }) as ProductTypes[];
+          setAddToCartProduct(uniqueUpdatedCart);
+        }
+      }
+    }
+    if (user) {
       router.push("/cart");
     } else {
       router.push("/login");
     }
   };
-  if(products) {
+  if (product) {
     return (
       <div className="w-full text-primary-txt">
         <Dialog open={openModal} onOpenChange={setOpenModal}>
@@ -42,33 +73,36 @@ const AddToCartModal = ({ products }: AddToCartModalProps) => {
                 <div className="md:flex md:justify-center md:items-center my-4 pb-4 border-b">
                   <div className="flex justify-center items-center">
                     <Image
-                      src={products?.image}
+                      src={product?.image}
                       alt="singleproduct"
                       width={300}
                       height={300}
                       style={{
                         maxWidth: "100%",
-                        height: "auto"
-                      }} />
+                        height: "auto",
+                      }}
+                    />
                   </div>
                   <div className="text-primary-txt text-lg md:text-base mx-4  ">
-                    {products?.name}
+                    {product?.name}
                   </div>
                   <div className="">
                     <p className="text-center md:flex md:item-center text-lg text-primary-txt font-bold">
                       <IndianRupee className="inline mt-1" size={20} />
-                      {Number(products?.discountedPrice).toLocaleString("us")}
+                      {Number(product?.discountedPrice).toLocaleString("us")}
                     </p>
                     <p className="text-center text-sm md:flex md:items-center text-primary-gray line-through mx-2">
                       <span className="text-xl">₹</span>
-                      {Number(products?.price).toLocaleString("us")}
+                      {Number(product?.price).toLocaleString("us")}
                     </p>
                   </div>
                 </div>
               </DialogDescription>
               <Button
                 className="bg-primary-btn hover:bg-primary-btn text-primary-dark"
-                onClick={handleProceedToCart}
+                onClick={() => {
+                  handleProceedToCart();
+                }}
               >
                 Proceeed To Cart
               </Button>

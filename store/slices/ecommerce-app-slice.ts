@@ -14,7 +14,7 @@ export interface EcommerceAppSliceTypes {
   setFilterProduct: (data: ProductTypes[]) => void;
   compareProduct: ProductTypes[];
   setCompareProduct: (data: ProductTypes[]) => void;
-  addToCartProduct: ProductTypes[];
+  addToCartProduct: ProductTypes[] ;
   setAddToCartProduct: (data: ProductTypes[]) => void;
   compareLimitExceeded?: boolean;
   setCompareLimitExceeded: (data: boolean) => void;

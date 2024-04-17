@@ -104,7 +104,6 @@ export const getDealOfTheDayProducts = ({
 };
 
 export const mappedProducts = (productsData: any) => {
-  // console.log("🚀 ~ mappedProducts ~ productsData:", productsData)
   const mapProducts = [];
   for (let productData of productsData) {
     const {
