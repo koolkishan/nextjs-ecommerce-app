@@ -9,10 +9,10 @@ interface SingleProductPageProps {
 }
 const SingleProductPage = ({ params }: SingleProductPageProps) => {
   return (
-    <div>
+    <div className="">
       <SingleProduct productId={params.productId} />
-      <ProductReview />
-      <SimilarProducts />
+      {/* <ProductReview />
+      <SimilarProducts /> */}
     </div>
   );
 };

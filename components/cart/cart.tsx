@@ -52,7 +52,7 @@ const Cart = () => {
                   {/* Product image */}
                   <div className="w-[170px] h-[170px] md:col-span-1">
                     <Image
-                      src="/deals-of-the-day/dealsOfTheDay1.png"
+                      src={product.image}
                       alt={product.name}
                       width={300}
                       height={350}

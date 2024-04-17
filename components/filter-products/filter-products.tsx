@@ -93,8 +93,8 @@ const FilterProducts = ({ products, setIsOpenDrawer }: FilterProductsProps) => {
                 </div>
 
                 <Image
-                  // src={product.imageUrl}
-                  src="/deals-of-the-day/dealsOfTheDay1.png"
+                  src={product.image}
+                  // src="/deals-of-the-day/dealsOfTheDay1.png"
                   alt="Product Image"
                   width={270}
                   height={270}

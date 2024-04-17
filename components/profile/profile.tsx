@@ -40,7 +40,7 @@ const Profile = () => {
 
   const handleLogin = (action: string) => {
     if (!user) {
-      setOpenModal(true);
+      // setOpenModal(true);
       router.push("/login");
     } else {
       if (action === "profile") {
@@ -50,7 +50,7 @@ const Profile = () => {
       }
     }
     if (action === "login") {
-      setOpenModal(true);
+      // setOpenModal(true);
       router.push("/login");
     }
   };
