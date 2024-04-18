@@ -201,7 +201,7 @@ const CarouselPrevious = React.forwardRef<
   (
     {
       className,
-      externalArrow = false,
+      externalarrow = false,
       variant = "outline",
       size = "icon",
       ...props
@@ -213,9 +213,9 @@ const CarouselPrevious = React.forwardRef<
     return (
       <Button
         ref={ref}
-        variant={externalArrow ? "externalArrow" : variant}
+        variant={externalarrow ? "externalarrow" : variant}
         size={size}
-        externalArrow={externalArrow}
+        externalarrow={externalarrow}
         className={cn(
           "absolute  h-8 w-8 rounded-full bg-red-400",
           orientation === "horizontal"
@@ -227,7 +227,7 @@ const CarouselPrevious = React.forwardRef<
         onClick={scrollPrev}
         {...props}
       >
-        {externalArrow ? (
+        {externalarrow ? (
           <ChevronLeft className="h-10 w-10 " />
         ) : (
           <ArrowLeft className="h-4 w-4" />
@@ -246,7 +246,7 @@ const CarouselNext = React.forwardRef<
   (
     {
       className,
-      externalArrow = false,
+      externalarrow = false,
       variant = "outline",
       size = "icon",
       ...props
@@ -258,7 +258,7 @@ const CarouselNext = React.forwardRef<
     return (
       <Button
         ref={ref}
-        variant={externalArrow ? "externalArrow" : variant}
+        variant={externalarrow ? "externalarrow" : variant}
         size={size}
         className={cn(
           "absolute h-8 w-8 rounded-full",
@@ -271,7 +271,7 @@ const CarouselNext = React.forwardRef<
         onClick={scrollNext}
         {...props}
       >
-        {externalArrow ? (
+        {externalarrow ? (
           <ChevronRight className="h-10 w-10" />
         ) : (
           <ArrowRight className="h-4 w-4" />

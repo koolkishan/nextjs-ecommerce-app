@@ -94,9 +94,9 @@ const MultipleProductCarousel = ({
                             )}
                           </p>
                         </div>
-                        <p>
+                        <div>
                           <StarRating rating={product.rate} />
-                        </p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -105,11 +105,11 @@ const MultipleProductCarousel = ({
           </CarouselContent>
 
           <CarouselPrevious
-            externalArrow={true}
+            externalarrow={true}
             className="hidden lg:bg-transparent lg:border-none lg:pl-[7px] lg:block lg:absolute lg:left-[-50px] lg:top-1/2 lg:-translate-y-1/2 "
           />
           <CarouselNext
-            externalArrow={true}
+            externalarrow={true}
             className="hidden lg:bg-transparent lg:border-none lg:pl-[7px] lg:block lg:absolute lg:right-[-50px] lg:top-1/2 lg:-translate-y-1/2  "
           />
         </Carousel>

@@ -14,9 +14,11 @@ import { Button } from "../ui/button";
 import { AddToCartModal, ProductReview, SimilarProducts } from ".";
 import { getProductFromId } from "@/actions/one-entry-api-calls/one-entry";
 import { Spinner } from "@/components/spinner";
-import { addCartProductInDb, getAllProductFromCart } from "@/actions/cart";
+import { addCartProductInDb, getAllProductFromCart, updateProduct } from "@/actions/cart";
+// import {  getAllProductFromCart } from "@/actions/cart";
 import { useAuthUser } from "@/hooks/useAuthUser";
 import { useRouter } from "next/navigation";
+import { updateCartProductInDb } from "@/data-access/cart";
 
 interface SingleProductProps {
   productId: string;
@@ -60,7 +62,19 @@ const SingleProduct = ({ productId }: SingleProductProps) => {
   const handleAddToCart = async (product: ProductTypes) => {
     setOpenModal(true);
     if (user && user.id) {
-      await addCartProductInDb({ productId: product.id, userId: user?.id });
+      const allCartProducts = await getAllProductFromCart({ userId: user.id });
+      console.log("🚀 ~ handleAddToCart ~ allCartProducts:", allCartProducts);
+      if (!allCartProducts) {
+        await addCartProductInDb({ productId: [product.id], userId: user?.id });
+      } else {
+        if (!allCartProducts.productId.includes(product.id)) {
+          // await addCartProductInDb({
+          //   productId: [product.id],
+          //   userId: user?.id,
+          // });
+          await updateProduct({productId:[...allCartProducts.productId, product.id], userId: user?.id})
+        }
+      }
       const updatedCart = [...addToCartProduct, product];
       setAddToCartProduct(updatedCart);
     } else {
@@ -78,7 +92,7 @@ const SingleProduct = ({ productId }: SingleProductProps) => {
             <div className="hidden md:visible md:flex md:justify-center md:items-center mr-8">
               <SingleProductCarousel
                 images={fetchedProduct?.subImage}
-                externalArrow={true}
+                externalarrow={true}
               />
             </div>
             <div className="flex justify-center items-center">

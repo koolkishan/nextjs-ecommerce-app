@@ -14,10 +14,46 @@ import cities from "cities.json";
 import Search from "./search";
 import { getProducts } from "@/actions/one-entry-api-calls/one-entry";
 import { ProductTypes } from "@/types";
+import { useAuthUser } from "@/hooks/useAuthUser";
+import { getAllProductFromCart } from "@/actions/cart";
 
 const Header = () => {
   const router = useRouter();
-  const { products, setProducts } = useAppStore();
+  const { products, setProducts, addToCartProduct, setAddToCartProduct } =
+    useAppStore();
+  const user = useAuthUser();
+
+  const handleClick = async () => {
+    if (user?.id) {
+      const cartProducts = await getAllProductFromCart({
+        userId: user?.id,
+      });
+      if (cartProducts) {
+        const cartFilterProducts = [];
+        for (let id of cartProducts.productId) {
+          const product = products.find((p) => +p.id === +id);
+          cartFilterProducts.push(product);
+        }
+        if (cartFilterProducts) {
+          const combinedCart = [...addToCartProduct, ...cartFilterProducts];
+          const uniqueProducts = new Set();
+          const uniqueUpdatedCart = combinedCart.filter((product) => {
+            if (!uniqueProducts.has(product?.id)) {
+              uniqueProducts.add(product?.id);
+              return true;
+            }
+            return false;
+          }) as ProductTypes[];
+          setAddToCartProduct(uniqueUpdatedCart);
+        }
+      }
+    }
+    if (user) {
+      router.push("/cart");
+    } else {
+      router.push("/login");
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,7 +80,7 @@ const Header = () => {
           </div>
           <div
             className="block mt-1 text-3xl md:hidden text-center cursor-pointer"
-            onClick={() => {}}
+            onClick={() => {router.push('/')}}
           >
             <p>ABC</p>
           </div>
@@ -66,11 +102,15 @@ const Header = () => {
               }
               hoverContent={<Profile />}
             />
-            <IoCart size={22} className="mr-4 cursor-pointer" />
+            <IoCart
+              size={22}
+              className="mr-4 cursor-pointer"
+              onClick={handleClick}
+            />
           </div>
         </div>
       </div>
-      <div className="block text-primary-white relative md:hidden lg:container lg:px-0 px-6">
+      <div className="block text-primary-white relative md:hidden lg:container lg:px-0 px-6 mb-4">
         <Search />
       </div>
     </>

@@ -15,12 +15,12 @@ import { imageLoader } from "@/lib/image-loader";
 import { useAppStore } from "@/store";
 
 interface SingleProductCarouselProps {
-  externalArrow: boolean;
+  externalarrow: boolean;
   images: string[] | undefined;
 }
 export function SingleProductCarousel({
   images,
-  externalArrow,
+  externalarrow,
 }: SingleProductCarouselProps) {
   const { setProductCarouselImage } = useAppStore();
   const handleClick = (image: string) => {
@@ -67,10 +67,10 @@ export function SingleProductCarousel({
           ))}
       </CarouselContent>
       <CarouselPrevious
-        externalArrow={externalArrow}
+        externalarrow={externalarrow}
         className="bg-transparent"
       />
-      <CarouselNext externalArrow={externalArrow} className="bg-transparent" />
+      <CarouselNext externalarrow={externalarrow} className="bg-transparent" />
     </Carousel>
   );
 }

@@ -5,12 +5,35 @@ import Image from "next/image";
 import { StarRating } from "../rating-stars";
 import { IndianRupee } from "lucide-react";
 import { Button } from "../ui/button";
+import { useAuthUser } from "@/hooks/useAuthUser";
+import { useRouter } from "next/navigation";
+import { getAllProductFromCart, updateProduct } from "@/actions/cart";
 
 const Cart = () => {
-  const { addToCartProduct } = useAppStore();
-  const handleRemove = (id:number) => {
-    
-  }
+  const user = useAuthUser();
+  const router = useRouter();
+  const { addToCartProduct, setAddToCartProduct } = useAppStore();
+
+  const handleRemove = async (id: number) => {
+    if (user && user.id) {
+      const cartProducts = await getAllProductFromCart({ userId: user.id });
+      const updateProductIds = cartProducts?.productId.filter(
+        (productId) => productId !== id
+      );
+      if (updateProductIds) {
+        const updatedCart = await updateProduct({
+          productId: updateProductIds,
+          userId: user.id,
+        });
+        const productForCartDisplay = addToCartProduct.filter(
+          (p) => +p.id !== +id
+        );
+        if (productForCartDisplay) setAddToCartProduct(productForCartDisplay);
+      }
+    } else {
+      router.push("/login");
+    }
+  };
 
   const isCartEmpty = !addToCartProduct || addToCartProduct.length === 0;
   const screenWidth = typeof window !== "undefined" ? window.innerWidth : 0;
@@ -35,8 +58,9 @@ const Cart = () => {
             height={400}
             style={{
               maxWidth: "100%",
-              height: "auto"
-            }} />
+              height: "auto",
+            }}
+          />
           <p className="text-xl font-bold">Cart is empty</p>
         </div>
       ) : (
@@ -57,8 +81,9 @@ const Cart = () => {
                       height={350}
                       style={{
                         maxWidth: "100%",
-                        height: "auto"
-                      }} />
+                        height: "auto",
+                      }}
+                    />
                   </div>
 
                   {/* Product details */}
@@ -69,9 +94,9 @@ const Cart = () => {
                     </p>
 
                     {/* Product rating */}
-                    <p className="text-primary-gray my-2">
+                    <div className="text-primary-gray my-2">
                       <StarRating rating={product.rate} />
-                    </p>
+                    </div>
 
                     {/* Price details (small screen) */}
                     <div className="block md:hidden">
@@ -94,7 +119,12 @@ const Cart = () => {
                     </div>
 
                     {/* Remove button */}
-                    <Button onClick={()=>{handleRemove(product.id)}} className="bg-transparent hover:bg-transparent border border-black px-10 text-primary-dark font-bold">
+                    <Button
+                      onClick={() => {
+                        handleRemove(product.id);
+                      }}
+                      className="bg-transparent hover:bg-transparent border border-black px-10 text-primary-dark font-bold"
+                    >
                       Remove
                     </Button>
                   </div>

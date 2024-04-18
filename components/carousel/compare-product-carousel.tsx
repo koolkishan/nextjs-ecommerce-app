@@ -56,14 +56,14 @@ const CompareProductCarousel = () => {
                         %off
                       </p>
                     </div>
-                    <p className="text-primary-gray">
+                    <div className="text-primary-gray">
                       <StarRating rating={product.rate} />
-                    </p>
+                    </div>
                   </div>
                 </div>
               </div>
               <div className="mt-4 border-l border-primary-txt p-4">
-                <p className="text-xl font-bold my-2">Key Features</p>
+                <div className="text-xl font-bold my-2">Key Features</div>
                 {product?.keyFeatures?.map((feat, index) => (
                   <div key={index}>
                     <li>{feat}</li>

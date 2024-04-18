@@ -35,8 +35,8 @@ const AddToCartModal = ({ product }: AddToCartModalProps) => {
       });
       if (cartProducts) {
         const cartFilterProducts = [];
-        for (let cart of cartProducts) {
-          const product = products.find((p) => +p.id === +cart.productId);
+        for (let id of cartProducts.productId) {
+          const product = products.find((p) => +p.id === +id);
           cartFilterProducts.push(product);
         }
         console.log(cartFilterProducts, ":???");
